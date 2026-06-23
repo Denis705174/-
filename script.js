@@ -4,10 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     burger.addEventListener('click', () => {
         nav.classList.toggle('active');
+        burger.classList.toggle('active');
     });
 
     nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => nav.classList.remove('active'));
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            burger.classList.remove('active');
+        });
     });
 
     // Form handling with Formspree
@@ -16,17 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.textContent;
-        
+
         btn.textContent = 'Отправка...';
         btn.disabled = true;
-        
+
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
             });
-            
+
             if (response.ok) {
                 btn.textContent = 'Отправлено!';
                 btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
@@ -55,24 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateCounters = () => {
         counters.forEach(counter => {
             const target = +counter.dataset.target;
-            if (!target) {
-                counter.textContent = counter.dataset.target || counter.textContent;
-                return;
-            }
+            if (!target) return;
             const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
+            const startTime = performance.now();
 
-            const update = () => {
-                current += step;
-                if (current >= target) {
+            const update = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                counter.textContent = Math.floor(eased * target);
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
                     counter.textContent = target;
-                    return;
                 }
-                counter.textContent = Math.floor(current);
-                requestAnimationFrame(update);
             };
-            update();
+            requestAnimationFrame(update);
         });
     };
 
@@ -107,16 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
 
     // Header scroll effect
-    let lastScroll = 0;
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll > 100) {
+        if (window.scrollY > 100) {
             header.style.borderBottomColor = 'rgba(39, 39, 42, 0.5)';
         } else {
-            header.style.borderBottomColor = 'var(--border)';
+            header.style.borderBottomColor = '';
         }
-        lastScroll = currentScroll;
     });
 
     // Smooth scroll for anchor links
