@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460">
+  <rect width="720" height="460" fill="#ebe6dc"/>
+  <rect x="28" y="24" width="664" height="412" fill="#fbf9f4" stroke="#d8d3c8"/>
+  <rect x="28" y="24" width="664" height="52" fill="#1c1b18"/>
+  <circle cx="52" cy="50" r="5" fill="#3d4a3c"/>
+  <text x="70" y="55" fill="#f4f1ea" font-family="Georgia, serif" font-size="15">GreenScape AI</text>
+  <rect x="520" y="38" width="148" height="24" fill="#f4f1ea"/>
+  <text x="594" y="55" text-anchor="middle" fill="#1c1b18" font-family="Arial, sans-serif" font-size="11">Book a visit</text>
+  <text x="360" y="168" text-anchor="middle" fill="#1c1b18" font-family="Georgia, serif" font-size="28">Landscape that sells</text>
+  <text x="360" y="198" text-anchor="middle" fill="#6b6962" font-family="Arial, sans-serif" font-size="14">AI qualifies the lead while the crew is on site</text>
+  <rect x="248" y="224" width="224" height="36" fill="#3d4a3c"/>
+  <text x="360" y="247" text-anchor="middle" fill="#f4f1ea" font-family="Arial, sans-serif" font-size="13">Talk to the assistant</text>
+  <rect x="470" y="286" width="196" height="122" fill="#1c1b18"/>
+  <text x="490" y="316" fill="#f4f1ea" font-family="Arial, sans-serif" font-size="12">AI assistant</text>
+  <text x="490" y="342" fill="#d8d3c8" font-family="Arial, sans-serif" font-size="11">Yard size?</text>
+  <text x="490" y="364" fill="#d8d3c8" font-family="Arial, sans-serif" font-size="11">Budget range?</text>
+  <text x="490" y="386" fill="#e7ebe4" font-family="Arial, sans-serif" font-size="11">Lead saved to CRM</text>
+</svg>
