@@ -36,6 +36,7 @@ h1, h2, h3, .logo {
 
 .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
+.glow,
 .glow {
     position: fixed;
     inset: 0;
@@ -79,18 +80,20 @@ h1, h2, h3, .logo {
 .logo {
     color: var(--cream);
     text-decoration: none;
-    font-size: 1.35rem;
+    font-size: 1.85rem;
 }
 .logo span { color: var(--coral); }
 
-.nav { display: flex; gap: 28px; }
+.nav { display: flex; gap: 22px; }
 .nav a {
-    color: var(--muted);
+    color: var(--cream);
     text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
 }
-.nav a:hover { color: var(--cream); }
+.nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
 .burger {
     display: none;
@@ -216,21 +219,22 @@ section { padding: 88px 0; }
 .approach-points h3 { font-size: 1.05rem; margin-bottom: 6px; }
 .approach-points p { color: var(--muted); font-size: 0.95rem; }
 
-.solutions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .solution-card {
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     overflow: hidden;
 }
-.solution-card:first-child { border-top: 3px solid var(--teal); }
-.solution-card:last-child { border-top: 3px solid var(--coral); }
+.solution-card:nth-child(1) { border-top: 3px solid var(--teal); }
+.solution-card:nth-child(2) { border-top: 3px solid var(--coral); }
+.solution-card:nth-child(3) { border-top: 3px solid var(--gold); }
 .solution-visual {
     background: #12110e;
     aspect-ratio: 720 / 460;
     overflow: hidden;
 }
-.solution-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.solution-visual img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .solution-body { padding: 28px; display: grid; gap: 12px; }
 .solution-body p:not(.kicker) { color: var(--muted); }
 .kicker {
@@ -240,7 +244,8 @@ section { padding: 88px 0; }
     text-transform: uppercase;
     color: var(--teal);
 }
-.solution-card:last-child .kicker { color: var(--coral); }
+.solution-card:nth-child(2) .kicker { color: var(--coral); }
+.solution-card:nth-child(3) .kicker { color: var(--gold); }
 .solution-body h3 { font-size: 1.35rem; font-weight: 400; }
 
 .text-link {
@@ -255,30 +260,22 @@ section { padding: 88px 0; }
 
 .channel-inner {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 32px;
     align-items: center;
 }
 .channel p { margin-top: 14px; color: var(--muted); max-width: 560px; }
 .channel-card {
-    display: grid;
-    gap: 8px;
-    padding: 32px;
+    display: block;
+    overflow: hidden;
     border-radius: var(--radius);
-    background: linear-gradient(145deg, #ff6b4a 0%, #e4482c 55%, #2ec4b6 160%);
+    border: 1px solid var(--line);
     text-decoration: none;
-    color: #1a100c;
 }
-.channel-label,
-.channel-handle { color: rgba(26, 16, 12, 0.72); font-size: 0.88rem; }
-.channel-card strong {
-    font-family: "IBM Plex Serif", serif;
-    font-size: 1.7rem;
-    font-weight: 400;
-}
-.channel-card .text-link {
-    color: #1a100c;
-    border-bottom-color: #1a100c;
+.channel-card img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .process-list {
@@ -334,12 +331,13 @@ section { padding: 88px 0; }
 .contact-desc { color: var(--muted); margin-bottom: 20px; }
 .contact-channels { display: grid; gap: 10px; }
 .contact-channel {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
     gap: 12px;
     width: 100%;
     text-align: left;
-    padding: 16px 0;
+    padding: 14px 0;
     color: var(--cream);
     text-decoration: none;
     font: inherit;
@@ -348,6 +346,13 @@ section { padding: 88px 0; }
     border-bottom: 1px solid var(--line);
     cursor: pointer;
 }
+.contact-icon {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+}
+.contact-icon svg { width: 22px; height: 22px; display: block; }
 .contact-channel span { color: var(--muted); }
 .contact-channel:hover strong { color: var(--coral); }
 
