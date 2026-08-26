@@ -23,7 +23,7 @@
   <rect x="310" y="104" width="88" height="32" fill="url(#userMsg)" rx="16"/>
   <text x="354" y="124" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="10">Здравствуйте!</text>
   <rect x="202" y="148" width="140" height="56" fill="#1a1a2e" rx="16"/>
-  <text x="218" y="168" fill="#ccc" font-family="Arial,sans-serif" font-size="10">Здравствуйте! Я бот Nexora.</text>
+  <text x="218" y="168" fill="#ccc" font-family="Arial,sans-serif" font-size="10">Здравствуйте! Я бот Syntora.</text>
   <text x="218" y="184" fill="#ccc" font-family="Arial,sans-serif" font-size="10">Как могу помочь? Выберите</text>
   <text x="218" y="196" fill="#06b6d4" font-family="Arial,sans-serif" font-size="10">услугу из меню ↓</text>
   <rect x="202" y="216" width="196" height="36" fill="#0a0a0f" rx="8" stroke="#333" stroke-width="1"/>
