@@ -1,22 +1,44 @@
+(() => {
+    const host = window.location.hostname;
+    if (window.location.protocol === "http:" && host === "syntora.space") {
+        window.location.replace(`https://syntora.space${window.location.pathname}${window.location.search}${window.location.hash}`);
+    }
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
     const burger = document.getElementById("burger");
     const nav = document.getElementById("nav");
     const header = document.getElementById("header");
     const progress = document.getElementById("scrollProgress");
     const form = document.getElementById("contactForm");
+    const formError = document.getElementById("formError");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    burger.addEventListener("click", () => {
-        nav.classList.toggle("active");
-        burger.classList.toggle("active");
-    });
+    const setMenu = (open) => {
+        if (!nav || !burger) {
+            return;
+        }
+        nav.classList.toggle("active", open);
+        burger.classList.toggle("active", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.classList.toggle("nav-open", open);
+    };
 
-    nav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-            nav.classList.remove("active");
-            burger.classList.remove("active");
+    if (burger && nav) {
+        burger.addEventListener("click", () => {
+            setMenu(!nav.classList.contains("active"));
         });
-    });
+
+        nav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => setMenu(false));
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setMenu(false);
+            }
+        });
+    }
 
     const onScroll = () => {
         const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -27,33 +49,37 @@ document.addEventListener("DOMContentLoaded", () => {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const original = btn.textContent;
-        btn.textContent = "Отправка...";
-        btn.disabled = true;
-        try {
-            const response = await fetch(form.action, {
-                method: "POST",
-                body: new FormData(form),
-                headers: { Accept: "application/json" },
-            });
-            if (!response.ok) {
-                throw new Error("send failed");
+    if (form && formError) {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const original = btn.textContent;
+            formError.hidden = true;
+            formError.textContent = "";
+            btn.textContent = "Отправка...";
+            btn.disabled = true;
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: { Accept: "application/json" },
+                });
+                if (!response.ok) {
+                    throw new Error("send failed");
+                }
+                btn.textContent = "Отправлено";
+                form.reset();
+            } catch (error) {
+                formError.hidden = false;
+                formError.textContent = "Не отправилось. Напишите в Telegram @syntora_space или попробуйте ещё раз.";
+            } finally {
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.disabled = false;
+                }, 2400);
             }
-            btn.textContent = "Отправлено";
-            form.reset();
-        } catch (error) {
-            window.location.href = "https://t.me/syntora_space";
-            return;
-        } finally {
-            setTimeout(() => {
-                btn.textContent = original;
-                btn.disabled = false;
-            }, 2400);
-        }
-    });
+        });
+    }
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
@@ -87,12 +113,19 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("resize", () => {
             size = fit();
         });
+        let active = !document.hidden;
         const loop = (time) => {
             draw(ctx, size[0], size[1], time);
-            if (!reduceMotion) {
+            if (!reduceMotion && active) {
                 requestAnimationFrame(loop);
             }
         };
+        document.addEventListener("visibilitychange", () => {
+            active = !document.hidden;
+            if (active && !reduceMotion) {
+                requestAnimationFrame(loop);
+            }
+        });
         loop(0);
     };
 
@@ -116,9 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const golden = Math.PI * (3 - Math.sqrt(5));
-    const globeDots = Array.from({ length: 520 }, (_, i) => {
-        const y = 1 - (i / 519) * 2;
-        const radius = Math.sqrt(1 - y * y);
+    const globeCount = window.innerWidth < 900 ? 220 : 520;
+    const globeDots = Array.from({ length: globeCount }, (_, i) => {
+        const y = 1 - (i / (globeCount - 1)) * 2;
+        const radius = Math.sqrt(Math.max(0, 1 - y * y));
         const theta = golden * i;
         return [Math.cos(theta) * radius, y, Math.sin(theta) * radius];
     });
