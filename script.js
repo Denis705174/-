@@ -1,3 +1,5 @@
+const LEAD_API = "https://syntora-lead-api.onrender.com/api/lead";
+
 (() => {
     const host = window.location.hostname;
     if (window.location.protocol === "http:" && host === "syntora.space") {
@@ -59,10 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.textContent = "Отправка...";
             btn.disabled = true;
             try {
-                const response = await fetch(form.action, {
+                const data = Object.fromEntries(new FormData(form).entries());
+                const response = await fetch(LEAD_API, {
                     method: "POST",
-                    body: new FormData(form),
-                    headers: { Accept: "application/json" },
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
                 });
                 if (!response.ok) {
                     throw new Error("send failed");
