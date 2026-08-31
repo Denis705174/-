@@ -1,4 +1,5 @@
 const LEAD_API = "https://syntora-lead-api.onrender.com/api/lead";
+const LEAD_FETCH_MS = 90000;
 
 (() => {
     const host = window.location.hostname;
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progress = document.getElementById("scrollProgress");
     const form = document.getElementById("contactForm");
     const formError = document.getElementById("formError");
+    const formSuccess = document.getElementById("formSuccess");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const setMenu = (open) => {
@@ -43,23 +45,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const onScroll = () => {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        const ratio = max > 0 ? window.scrollY / max : 0;
-        progress.style.width = `${Math.min(ratio, 1) * 100}%`;
-        header.classList.toggle("is-scrolled", window.scrollY > 8);
+        if (progress) {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const ratio = max > 0 ? window.scrollY / max : 0;
+            progress.style.width = `${Math.min(ratio, 1) * 100}%`;
+        }
+        if (header) {
+            header.classList.toggle("is-scrolled", window.scrollY > 8);
+        }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    if (form && formError) {
+    const clearFormMessages = () => {
+        if (formError) {
+            formError.hidden = true;
+            formError.textContent = "";
+        }
+        if (formSuccess) {
+            formSuccess.hidden = true;
+            formSuccess.textContent = "";
+        }
+    };
+
+    const showFormError = (message) => {
+        if (!formError) {
+            return;
+        }
+        formError.textContent = message;
+        formError.hidden = false;
+        if (formSuccess) {
+            formSuccess.hidden = true;
+        }
+    };
+
+    const showFormSuccess = (message) => {
+        if (!formSuccess) {
+            return;
+        }
+        formSuccess.textContent = message;
+        formSuccess.hidden = false;
+        if (formError) {
+            formError.hidden = true;
+        }
+    };
+
+    if (form) {
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
             const btn = form.querySelector('button[type="submit"]');
             const original = btn.textContent;
-            formError.hidden = true;
-            formError.textContent = "";
+            clearFormMessages();
             btn.textContent = "Отправка...";
             btn.disabled = true;
+
+            const controller = new AbortController();
+            const timeout = window.setTimeout(() => controller.abort(), LEAD_FETCH_MS);
+
             try {
                 const data = Object.fromEntries(new FormData(form).entries());
                 const response = await fetch(LEAD_API, {
@@ -69,20 +111,38 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(data),
+                    signal: controller.signal,
                 });
-                if (!response.ok) {
-                    throw new Error("send failed");
+
+                if (response.status === 429) {
+                    throw new Error("rate");
                 }
+                if (response.status === 502) {
+                    throw new Error("telegram");
+                }
+                if (!response.ok) {
+                    throw new Error("send");
+                }
+
                 btn.textContent = "Отправлено";
                 form.reset();
+                showFormSuccess("Заявка отправлена. Менеджер свяжется с вами в Telegram или по указанному контакту.");
             } catch (error) {
-                formError.hidden = false;
-                formError.textContent = "Не отправилось. Напишите в Telegram @syntora_space или попробуйте ещё раз.";
+                if (error.name === "AbortError") {
+                    showFormError("Сервис просыпается — подождите минуту и попробуйте снова, или напишите в Telegram @syntora_space.");
+                } else if (error.message === "rate") {
+                    showFormError("Слишком часто. Подождите полминуты и отправьте ещё раз.");
+                } else if (error.message === "telegram") {
+                    showFormError("Заявка сохранена, но уведомление не дошло. Напишите напрямую в Telegram @syntora_space.");
+                } else {
+                    showFormError("Не отправилось. Напишите в Telegram @syntora_space или попробуйте ещё раз.");
+                }
             } finally {
+                window.clearTimeout(timeout);
                 setTimeout(() => {
                     btn.textContent = original;
                     btn.disabled = false;
-                }, 2400);
+                }, 3200);
             }
         });
     }
@@ -90,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
             const href = anchor.getAttribute("href");
-            if (href === "#") {
+            if (!href || href === "#") {
                 return;
             }
             const target = document.querySelector(href);
@@ -99,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             event.preventDefault();
             target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+            history.replaceState(null, "", href);
         });
     });
 

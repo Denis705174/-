@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="stylesheet" href="style.css?v=21">
 </head>
 <body>
     <a class="skip-link" href="#main">К содержанию</a>
@@ -31,7 +31,7 @@
 
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="#" class="logo" aria-label="Syntora"><span class="logo-mark" aria-hidden="true"><img src="img/syntora-mark.png" alt=""></span><span class="logo-word">Syntora</span></a>
+            <a href="/" class="logo" aria-label="Syntora — на главную"><span class="logo-mark" aria-hidden="true"><img src="img/syntora-mark.png" alt=""></span><span class="logo-word">Syntora</span></a>
             <nav class="nav" id="nav">
                 <a href="#approach">Подход</a>
                 <a href="#solutions">Решения</a>
@@ -113,7 +113,7 @@
             <div class="solutions-grid">
                 <a class="solution-card tilt" href="https://greenscape-ai-demo.vercel.app/" target="_blank" rel="noopener">
                     <div class="solution-visual">
-                        <img src="img/greenscape.png" alt="Лендинг GreenScape Pro с AI-агентом" width="720" height="460">
+                        <img src="img/greenscape.png" alt="GreenScape AI — лендинг с AI-агентом" width="720" height="460">
                     </div>
                     <div class="solution-body">
                         <p class="kicker">GreenScape AI · лендинг</p>
@@ -256,7 +256,7 @@
                         </a>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm" action="/api/lead" method="POST" novalidate>
+                <form class="contact-form" id="contactForm" action="#contact" method="post" novalidate>
                     <p class="hp" aria-hidden="true">
                         <label for="gotcha">Не заполняйте</label>
                         <input id="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -290,9 +290,10 @@
                     </div>
                     <label class="consent">
                         <input type="checkbox" name="consent" value="yes" required>
-                        <span>Согласен на обработку персональных данных. <a href="privacy.html">Политика конфиденциальности</a></span>
+                        <span>Согласен на обработку персональных данных, включая возможную передачу в Telegram (трансграничная передача), в целях ответа на заявку. <a href="privacy.html">Политика конфиденциальности</a></span>
                     </label>
-                    <p class="form-error" id="formError" hidden></p>
+                    <p class="form-success" id="formSuccess" role="status" aria-live="polite" hidden></p>
+                    <p class="form-error" id="formError" role="alert" aria-live="assertive" hidden></p>
                     <button type="submit" class="btn btn-solid btn-full">Отправить заявку</button>
                 </form>
             </div>
@@ -303,7 +304,7 @@
     <footer class="footer">
         <div class="container footer-inner">
             <div>
-                <a href="#" class="logo" aria-label="Syntora"><span class="logo-mark" aria-hidden="true"><img src="img/syntora-mark.png" alt=""></span><span class="logo-word">Syntora</span></a>
+                <a href="/" class="logo" aria-label="Syntora — на главную"><span class="logo-mark" aria-hidden="true"><img src="img/syntora-mark.png" alt=""></span><span class="logo-word">Syntora</span></a>
                 <p>ИИ-менеджеры и AI-лендинги.</p>
             </div>
             <div class="footer-links">
@@ -313,6 +314,7 @@
                 <a href="#process">Процесс</a>
                 <a href="#pricing">Цены</a>
                 <a href="#contact">Контакты</a>
+                <a href="privacy.html">Конфиденциальность</a>
             </div>
         </div>
         <div class="container footer-bottom">
@@ -320,6 +322,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20"></script>
+    <script src="script.js?v=21"></script>
 </body>
 </html>
