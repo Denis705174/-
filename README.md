@@ -14,7 +14,7 @@
 
 ## Форма заявок
 
-Форма отправляет JSON на `lead-api` (Render: `https://syntora-lead-api.onrender.com`), который:
+Форма отправляет JSON на `lead-api` (Render: `https://syntora-lead-api-1.onrender.com`), который:
 1. Сохраняет заявку в SQLite
 2. Шлёт уведомление в Telegram
 

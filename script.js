@@ -1,4 +1,4 @@
-const LEAD_API = "https://syntora-lead-api.onrender.com/api/lead";
+const LEAD_API = "https://syntora-lead-api-1.onrender.com/api/lead";
 const LEAD_FETCH_MS = 90000;
 
 (() => {
