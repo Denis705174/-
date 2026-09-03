@@ -395,6 +395,13 @@ a.solution-card:hover {
 .contact-icon svg { width: 24px; height: 24px; display: block; overflow: visible; }
 .contact-channel span { color: var(--muted); }
 .contact-channel:hover strong { color: var(--cyan); }
+.meta-disclaimer {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.45;
+    max-width: 42rem;
+}
 
 .contact-form { display: grid; gap: 12px; padding: 24px; position: relative; }
 .form-field { display: grid; gap: 6px; }
