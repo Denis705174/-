@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
     const formError = document.getElementById("formError");
     const formSuccess = document.getElementById("formSuccess");
-    const bgMesh = document.getElementById("bgMesh");
-    const cursorGlow = document.getElementById("cursorGlow");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const setMenu = (open) => {
@@ -31,10 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (burger && nav) {
-        burger.addEventListener("click", () => setMenu(!nav.classList.contains("active")));
+        burger.addEventListener("click", () => {
+            setMenu(!nav.classList.contains("active"));
+        });
+
         nav.querySelectorAll("a").forEach((link) => {
             link.addEventListener("click", () => setMenu(false));
         });
+
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
                 setMenu(false);
@@ -51,83 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (header) {
             header.classList.toggle("is-scrolled", window.scrollY > 8);
         }
-        if (bgMesh && !reduceMotion) {
-            const y = window.scrollY * 0.08;
-            bgMesh.style.transform = `translate3d(0, ${y}px, 0)`;
-        }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    if (!reduceMotion) {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
-        );
-        document.querySelectorAll(".reveal-on-scroll").forEach((el, index) => {
-            el.style.setProperty("--stagger", `${Math.min(index % 6, 5) * 70}ms`);
-            observer.observe(el);
-        });
-    } else {
-        document.querySelectorAll(".reveal-on-scroll").forEach((el) => el.classList.add("is-visible"));
-    }
-
-    if (!reduceMotion && cursorGlow && window.matchMedia("(pointer: fine)").matches) {
-        let mx = window.innerWidth / 2;
-        let my = window.innerHeight / 2;
-        let gx = mx;
-        let gy = my;
-        document.addEventListener(
-            "pointermove",
-            (event) => {
-                mx = event.clientX;
-                my = event.clientY;
-                cursorGlow.classList.add("is-on");
-            },
-            { passive: true }
-        );
-        document.addEventListener("pointerleave", () => cursorGlow.classList.remove("is-on"));
-        const tickGlow = () => {
-            gx += (mx - gx) * 0.12;
-            gy += (my - gy) * 0.12;
-            cursorGlow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
-            requestAnimationFrame(tickGlow);
-        };
-        requestAnimationFrame(tickGlow);
-    }
-
-    if (!reduceMotion) {
-        document.querySelectorAll(".magnetic").forEach((btn) => {
-            btn.addEventListener("pointermove", (event) => {
-                const box = btn.getBoundingClientRect();
-                const x = event.clientX - box.left - box.width / 2;
-                const y = event.clientY - box.top - box.height / 2;
-                btn.style.transform = `translate3d(${x * 0.18}px, ${y * 0.22}px, 0)`;
-            });
-            btn.addEventListener("pointerleave", () => {
-                btn.style.transform = "";
-            });
-        });
-
-        document.querySelectorAll(".tilt-card").forEach((card) => {
-            card.addEventListener("pointermove", (event) => {
-                const box = card.getBoundingClientRect();
-                const x = (event.clientX - box.left) / box.width - 0.5;
-                const y = (event.clientY - box.top) / box.height - 0.5;
-                card.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 7}deg) translateY(-4px)`;
-            });
-            card.addEventListener("pointerleave", () => {
-                card.style.transform = "";
-            });
-        });
-    }
 
     const clearFormMessages = () => {
         if (formError) {
@@ -160,9 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (formError) {
             formError.hidden = true;
         }
-        if (typeof window.mslFireConfetti === "function") {
-            window.mslFireConfetti();
-        }
     };
 
     if (form) {
@@ -192,18 +117,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (response.status === 429) {
                     throw new Error("rate");
                 }
+                if (response.status === 502) {
+                    throw new Error("telegram");
+                }
                 if (!response.ok) {
                     throw new Error("send");
                 }
 
                 btn.textContent = "Отправлено";
                 form.reset();
-                showFormSuccess("Заявка отправлена. Менеджер MiniScribe Labs свяжется с вами.");
+                showFormSuccess("Заявка отправлена. Менеджер Syntora Space свяжется с вами.");
             } catch (error) {
                 if (error.name === "AbortError") {
                     showFormError("Сервис просыпается — подождите минуту и попробуйте снова, или напишите в Telegram @syntora_space.");
                 } else if (error.message === "rate") {
                     showFormError("Слишком часто. Подождите полминуты и отправьте ещё раз.");
+                } else if (error.message === "telegram") {
+                    showFormError("Заявка сохранена, но уведомление не дошло. Напишите напрямую в Telegram @syntora_space.");
                 } else {
                     showFormError("Не отправилось. Напишите в Telegram @syntora_space или попробуйте ещё раз.");
                 }
@@ -233,19 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const canvas = document.getElementById("fxField");
-    if (canvas && !reduceMotion) {
+    const setupCanvas = (canvas, draw) => {
+        if (!canvas) {
+            return;
+        }
         const ctx = canvas.getContext("2d");
-        const particles = Array.from({ length: window.innerWidth < 800 ? 36 : 64 }, () => ({
-            x: Math.random(),
-            y: Math.random(),
-            r: Math.random() * 1.8 + 0.4,
-            vx: (Math.random() - 0.5) * 0.00035,
-            vy: (Math.random() - 0.5) * 0.00025,
-            a: Math.random(),
-            s: 0.4 + Math.random() * 1.2,
-        }));
-
         const fit = () => {
             const rect = canvas.getBoundingClientRect();
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -254,61 +176,123 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             return [rect.width, rect.height];
         };
-
         let size = fit();
         window.addEventListener("resize", () => {
             size = fit();
         });
-
         let active = !document.hidden;
-        document.addEventListener("visibilitychange", () => {
-            active = !document.hidden;
-            if (active) {
-                requestAnimationFrame(loop);
-            }
-        });
-
         const loop = (time) => {
-            const [w, h] = size;
-            ctx.clearRect(0, 0, w, h);
-
-            particles.forEach((p) => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > 1) {
-                    p.vx *= -1;
-                }
-                if (p.y < 0 || p.y > 1) {
-                    p.vy *= -1;
-                }
-                const pulse = 0.2 + Math.abs(Math.sin(time * 0.001 * p.s + p.a * 6)) * 0.8;
-                ctx.beginPath();
-                ctx.fillStyle = `rgba(200, 245, 66, ${0.12 + pulse * 0.35})`;
-                ctx.arc(p.x * w, p.y * h, p.r * (0.8 + pulse * 0.5), 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            for (let i = 0; i < particles.length; i += 1) {
-                for (let j = i + 1; j < particles.length; j += 1) {
-                    const a = particles[i];
-                    const b = particles[j];
-                    const dx = (a.x - b.x) * w;
-                    const dy = (a.y - b.y) * h;
-                    const dist = Math.hypot(dx, dy);
-                    if (dist < 120) {
-                        ctx.strokeStyle = `rgba(200, 245, 66, ${(1 - dist / 120) * 0.12})`;
-                        ctx.beginPath();
-                        ctx.moveTo(a.x * w, a.y * h);
-                        ctx.lineTo(b.x * w, b.y * h);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            if (active) {
+            draw(ctx, size[0], size[1], time);
+            if (!reduceMotion && active) {
                 requestAnimationFrame(loop);
             }
         };
-        requestAnimationFrame(loop);
+        document.addEventListener("visibilitychange", () => {
+            active = !document.hidden;
+            if (active && !reduceMotion) {
+                requestAnimationFrame(loop);
+            }
+        });
+        loop(0);
+    };
+
+    const stars = Array.from({ length: 140 }, () => ({
+        x: Math.random(),
+        y: Math.random(),
+        r: Math.random() * 1.4 + 0.2,
+        a: Math.random(),
+        s: 0.2 + Math.random() * 0.8,
+    }));
+
+    setupCanvas(document.getElementById("space"), (ctx, w, h, time) => {
+        ctx.clearRect(0, 0, w, h);
+        stars.forEach((star) => {
+            const pulse = 0.25 + Math.abs(Math.sin(time * 0.001 * star.s + star.a * 8)) * 0.7;
+            ctx.fillStyle = `rgba(0, 212, 255, ${pulse * 0.55})`;
+            ctx.beginPath();
+            ctx.arc(star.x * w, star.y * h, star.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    });
+
+    const golden = Math.PI * (3 - Math.sqrt(5));
+    const globeCount = window.innerWidth < 900 ? 220 : 520;
+    const globeDots = Array.from({ length: globeCount }, (_, i) => {
+        const y = 1 - (i / (globeCount - 1)) * 2;
+        const radius = Math.sqrt(Math.max(0, 1 - y * y));
+        const theta = golden * i;
+        return [Math.cos(theta) * radius, y, Math.sin(theta) * radius];
+    });
+
+    setupCanvas(document.getElementById("globe"), (ctx, w, h, time) => {
+        ctx.clearRect(0, 0, w, h);
+        const cx = w * 0.52;
+        const cy = h * 0.52;
+        const radius = Math.min(w, h) * 0.32;
+        const rot = reduceMotion ? 0.6 : time * 0.00045;
+
+        const glow = ctx.createRadialGradient(cx, cy, radius * 0.15, cx, cy, radius * 1.55);
+        glow.addColorStop(0, "rgba(0, 123, 255, 0.28)");
+        glow.addColorStop(0.55, "rgba(0, 242, 255, 0.08)");
+        glow.addColorStop(1, "transparent");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 1.55, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        [[0.55, 1.72], [0.22, 1.95], [-0.42, 1.5]].forEach((ring, i) => {
+            ctx.strokeStyle = `rgba(0, 242, 255, ${0.22 + i * 0.08})`;
+            ctx.lineWidth = 1.1;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, radius * ring[1], radius * ring[1] * 0.26, ring[0] + rot * (0.4 + i * 0.12), 0, Math.PI * 2);
+            ctx.stroke();
+        });
+        ctx.restore();
+
+        globeDots.forEach((dot) => {
+            const cos = Math.cos(rot);
+            const sin = Math.sin(rot);
+            const x = dot[0] * cos - dot[2] * sin;
+            const z = dot[0] * sin + dot[2] * cos;
+            if (z < -0.08) {
+                return;
+            }
+            const depth = (z + 1) / 2;
+            ctx.fillStyle = `rgba(0, 212, 255, ${0.18 + depth * 0.82})`;
+            ctx.beginPath();
+            ctx.arc(cx + x * radius, cy + dot[1] * radius, 0.7 + depth * 1.7, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        const ang = rot * 3.2;
+        const px = cx + Math.cos(ang) * radius * 1.62;
+        const py = cy + Math.sin(ang) * radius * 0.42;
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "#00d4ff";
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.moveTo(px + 10, py);
+        ctx.lineTo(px - 7, py - 5);
+        ctx.lineTo(px - 1, py);
+        ctx.lineTo(px - 7, py + 5);
+        ctx.closePath();
+        ctx.fill();
+        ctx.shadowBlur = 0;
+    });
+
+    if (!reduceMotion) {
+        document.querySelectorAll(".tilt").forEach((card) => {
+            card.addEventListener("mousemove", (event) => {
+                const box = card.getBoundingClientRect();
+                const x = (event.clientX - box.left) / box.width - 0.5;
+                const y = (event.clientY - box.top) / box.height - 0.5;
+                card.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 10}deg) translateZ(8px)`;
+            });
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "";
+            });
+        });
     }
 });

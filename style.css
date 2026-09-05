@@ -1,6 +1,5 @@
-/* MiniScribe Labs — dark studio system
-   Direction: MotionSites Digital Experiences + Prisma (black, glass, bold type)
-   Accent: acid lime (not purple). Fonts: Syne + Instrument Serif + Manrope */
+/* Syntora Space — dark studio system
+   Accent: acid lime. Fonts: Syne + Instrument Serif + Manrope */
 
 :root {
     --bg: #060708;
@@ -65,21 +64,14 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color
 
 .bg-mesh {
     position: fixed;
-    inset: -12% 0 0 0;
+    inset: 0;
     z-index: 0;
     pointer-events: none;
-    will-change: transform;
     background:
-        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(200, 245, 66, 0.16), transparent 55%),
-        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(80, 120, 255, 0.12), transparent 50%),
-        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(200, 245, 66, 0.07), transparent 55%),
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(200, 245, 66, 0.14), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(80, 120, 255, 0.1), transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(200, 245, 66, 0.06), transparent 55%),
         var(--bg);
-    animation: meshDrift 18s ease-in-out infinite alternate;
-}
-
-@keyframes meshDrift {
-    from { filter: hue-rotate(0deg) saturate(1); }
-    to { filter: hue-rotate(12deg) saturate(1.15); }
 }
 
 .bg-noise {
@@ -90,32 +82,6 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color
     opacity: 0.18;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     mix-blend-mode: overlay;
-}
-
-.cursor-glow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 420px;
-    height: 420px;
-    margin: -210px 0 0 -210px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
-    background: radial-gradient(circle, rgba(200, 245, 66, 0.14) 0%, transparent 68%);
-    transition: opacity 0.35s ease;
-    will-change: transform;
-}
-.cursor-glow.is-on { opacity: 1; }
-
-.fx-field {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
 }
 
 .scroll-progress {
@@ -204,25 +170,13 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color
     border-radius: 999px;
     padding: 0.7rem 1.25rem;
     transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    will-change: transform;
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-solid {
     background: var(--accent);
     color: var(--accent-ink);
     box-shadow: 0 0 0 1px rgba(200, 245, 66, 0.2), 0 10px 30px rgba(200, 245, 66, 0.15);
-    position: relative;
-    overflow: hidden;
 }
-.btn-solid::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
-    transform: translateX(-120%);
-    transition: transform 0.55s ease;
-}
-.btn-solid:hover::after { transform: translateX(120%); }
 .btn-solid:hover { box-shadow: 0 0 0 1px rgba(200, 245, 66, 0.35), 0 14px 36px rgba(200, 245, 66, 0.22); }
 .btn-glass {
     background: var(--bg-panel);
@@ -276,16 +230,12 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
 .section-desc { font-size: 1.05rem; }
 
 .hero {
-    position: relative;
     padding: 4.5rem 0 5.5rem;
     min-height: calc(100svh - var(--header-h));
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
 }
 .hero-frame {
-    position: relative;
-    z-index: 1;
     width: min(1120px, calc(100% - 2.5rem));
     margin-inline: auto;
     padding: 2.5rem 0 1rem;
@@ -299,7 +249,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
     margin: 0 0 1.5rem;
     color: var(--text);
     max-width: 14ch;
-    text-shadow: 0 0 40px rgba(200, 245, 66, 0.12);
 }
 .hero h1 {
     font-size: clamp(1.45rem, 3.2vw, 2.35rem);
@@ -325,42 +274,12 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
 .delay-2 { animation-delay: 0.24s; }
 .delay-3 { animation-delay: 0.36s; }
 
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(28px);
-    filter: blur(10px);
-    transition:
-        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger, 0ms),
-        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger, 0ms),
-        filter 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger, 0ms);
-}
-.reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: none;
-    filter: none;
-}
-
-.tilt-card {
-    transform-style: preserve-3d;
-    transition: transform 0.25s ease, border-color 0.2s ease;
-    will-change: transform;
-}
-
 @keyframes rise {
     to { opacity: 1; transform: none; filter: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .reveal,
-    .reveal-on-scroll {
-        animation: none;
-        opacity: 1;
-        transform: none;
-        filter: none;
-        transition: none;
-    }
-    .bg-mesh { animation: none; }
-    .cursor-glow { display: none; }
+    .reveal { animation: none; opacity: 1; transform: none; filter: none; }
     html { scroll-behavior: auto; }
 }
 
@@ -413,11 +332,11 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
     border-radius: var(--radius);
     overflow: hidden;
     background: var(--bg-elevated);
-    transition: border-color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 .solution-card:hover {
     border-color: rgba(200, 245, 66, 0.35);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
 }
 .solution-visual {
     aspect-ratio: 16 / 10;
@@ -428,10 +347,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 12px); }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.solution-card:hover .solution-visual img {
-    transform: scale(1.05);
 }
 .solution-body { padding: 1.25rem 1.35rem 1.45rem; }
 .kicker {

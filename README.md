@@ -1,11 +1,11 @@
-# MiniScribe Labs — статический сайт (пока на GitHub Pages / syntora.space)
+# Syntora Space — статический сайт (пока на GitHub Pages / syntora.space)
 
 ## Бренд
 
-**MiniScribe Labs** — студия ИИ-менеджеров и AI-лендингов.
+**Syntora Space** — студия ИИ-менеджеров и AI-лендингов.
 
 <!-- TODO: заменить на реальный домен после покупки -->
-Домен: `[ДОМЕН]` (плейсхолдер). Пока CNAME указывает на `syntora.space`, чтобы сайт оставался доступен.
+Домен: `syntora.space` (плейсхолдер). Пока CNAME указывает на `syntora.space`, чтобы сайт оставался доступен.
 
 ## Форма заявок
 
@@ -19,8 +19,8 @@
 
 | На сайте | Username | Примечание |
 |----------|----------|------------|
-| MiniScribe Kitchen AI · демо | @iogram3x_bot | переименование в BotFather — по желанию |
-| MiniScribe Lead Bot · демо | @MegaPromptBot | актуальный lead-бот |
+| Syntora Kitchen AI · демо | @iogram3x_bot | переименование в BotFather — по желанию |
+| Syntora Lead Bot · демо | @MegaPromptBot | актуальный lead-бот |
 | @ymy_test_bot | — | устарел, не используется |
 
 ## РКН / 152-ФЗ
