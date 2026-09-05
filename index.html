@@ -22,7 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=31">
+    <link rel="stylesheet" href="style.css?v=32">
+    <link rel="stylesheet" href="magic.css?v=32">
 </head>
 <body>
     <a class="skip-link" href="#main">К содержанию</a>
@@ -45,7 +46,7 @@
                 <a href="#pricing">Цены</a>
                 <a href="#contact">Контакты</a>
             </nav>
-            <a href="#contact" class="btn btn-solid header-cta magnetic">Обсудить задачу</a>
+            <a href="#contact" class="btn btn-solid header-cta magnetic mu-shimmer-btn mu-pulse-btn">Обсудить задачу</a>
             <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav" type="button">
                 <span></span><span></span><span></span>
             </button>
@@ -55,44 +56,120 @@
     <main id="main">
         <section class="hero">
             <canvas class="fx-field" id="fxField" aria-hidden="true"></canvas>
+            <div class="mu-meteors" id="muMeteors" aria-hidden="true"></div>
+            <div class="mu-ripple" aria-hidden="true">
+                <span style="--size: 28vmin; --delay: 0s"></span>
+                <span style="--size: 48vmin; --delay: 1.2s"></span>
+                <span style="--size: 72vmin; --delay: 2.4s"></span>
+                <span style="--size: 96vmin; --delay: 3.6s"></span>
+            </div>
             <div class="container hero-frame">
-                <p class="brand-lockup reveal">MiniScribe Labs</p>
-                <h1 class="reveal delay-1">ИИ-менеджеры и AI-лендинги, <em>которые продают 24/7</em></h1>
+                <p class="eyebrow reveal"><span class="mu-shiny-text">Studio · AI sales systems</span></p>
+                <p class="brand-lockup reveal mu-sparkles">MiniScribe <span class="mu-gradient-text">Labs</span></p>
+                <h1 class="reveal delay-1">ИИ-менеджеры и AI-лендинги, которые
+                    <em class="mu-word-rotate" id="muWordRotate" aria-live="polite">
+                        <span>продают 24/7</span>
+                        <span>квалифицируют лид</span>
+                        <span>отрабатывают «дорого»</span>
+                        <span>алертят оператору</span>
+                    </em>
+                </h1>
                 <p class="hero-desc reveal delay-2">Мы проектируем контур продаж, в котором лид не теряется: квалификация, возражение, следующий шаг и мгновенный алерт оператору — пока вы на объекте или offline.</p>
                 <div class="hero-actions reveal delay-3">
-                    <a href="#solutions" class="btn btn-solid btn-lg magnetic">Смотреть решения</a>
-                    <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="btn btn-glass btn-lg magnetic">Написать в Telegram</a>
+                    <a href="#solutions" class="btn btn-solid btn-lg magnetic mu-shimmer-btn interactive-hover">
+                        <span class="ih-label">Смотреть решения</span>
+                        <span class="ih-arrow" aria-hidden="true">Открыть →</span>
+                    </a>
+                    <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="btn btn-glass btn-lg magnetic mu-pulse-btn">Написать в Telegram</a>
                 </div>
             </div>
         </section>
 
-        <section class="approach" id="approach">
+        <div class="mu-marquee" aria-hidden="true">
+            <div class="mu-marquee-track" style="--duration: 36s">
+                <span class="mu-marquee-item">ИИ-менеджер</span>
+                <span class="mu-marquee-item"><em>Telegram</em></span>
+                <span class="mu-marquee-item">AI-лендинг</span>
+                <span class="mu-marquee-item">Квалификация лида</span>
+                <span class="mu-marquee-item"><em>24/7</em></span>
+                <span class="mu-marquee-item">Алерт оператору</span>
+                <span class="mu-marquee-item">Отработка возражений</span>
+                <span class="mu-marquee-item"><em>MiniScribe Labs</em></span>
+                <span class="mu-marquee-item">ИИ-менеджер</span>
+                <span class="mu-marquee-item"><em>Telegram</em></span>
+                <span class="mu-marquee-item">AI-лендинг</span>
+                <span class="mu-marquee-item">Квалификация лида</span>
+                <span class="mu-marquee-item"><em>24/7</em></span>
+                <span class="mu-marquee-item">Алерт оператору</span>
+                <span class="mu-marquee-item">Отработка возражений</span>
+                <span class="mu-marquee-item"><em>MiniScribe Labs</em></span>
+            </div>
+        </div>
+        <div class="mu-marquee reverse" aria-hidden="true">
+            <div class="mu-marquee-track" style="--duration: 42s">
+                <span class="mu-marquee-item">Лендинг + бот</span>
+                <span class="mu-marquee-item"><em>GreenScape</em></span>
+                <span class="mu-marquee-item">Kitchen AI</span>
+                <span class="mu-marquee-item">Lead Bot</span>
+                <span class="mu-marquee-item"><em>без потери лида</em></span>
+                <span class="mu-marquee-item">воронка → сценарий → запуск</span>
+                <span class="mu-marquee-item">Лендинг + бот</span>
+                <span class="mu-marquee-item"><em>GreenScape</em></span>
+                <span class="mu-marquee-item">Kitchen AI</span>
+                <span class="mu-marquee-item">Lead Bot</span>
+                <span class="mu-marquee-item"><em>без потери лида</em></span>
+                <span class="mu-marquee-item">воронка → сценарий → запуск</span>
+            </div>
+        </div>
+
+        <section class="mu-stats">
+            <div class="container mu-stats-grid">
+                <div class="mu-stat reveal-on-scroll mu-blur-in mu-border-beam">
+                    <strong><span data-ticker="24" data-suffix="/7">0</span></strong>
+                    <span>ответ и квалификация без выходных</span>
+                </div>
+                <div class="mu-stat reveal-on-scroll mu-blur-in mu-border-beam">
+                    <strong><span data-ticker="3" data-suffix="+">0</span></strong>
+                    <span>живых демо в нишах</span>
+                </div>
+                <div class="mu-stat reveal-on-scroll mu-blur-in mu-border-beam">
+                    <strong><span data-ticker="4">0</span></strong>
+                    <span>шага до запуска контура</span>
+                </div>
+                <div class="mu-stat reveal-on-scroll mu-blur-in mu-border-beam">
+                    <strong><span data-ticker="1" data-suffix=" сек">0</span></strong>
+                    <span>до алерта в Telegram</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="approach mu-dot-pattern" id="approach">
             <div class="container approach-grid">
-                <div class="reveal-on-scroll">
+                <div class="reveal-on-scroll mu-blur-in">
                     <p class="eyebrow">Почему это работает</p>
                     <h2>Продажи в логике системы, а не виджет «ради галочки»</h2>
                 </div>
-                <div class="approach-copy reveal-on-scroll">
+                <div class="approach-copy reveal-on-scroll mu-blur-in">
                     <p><strong>MiniScribe Labs</strong> — студия ИИ-контуров продаж. Мы собираем рабочие сценарии под нишу и доводим до результата: без воды и лишних обещаний.</p>
                     <p>В основе — личный опыт основателя в продажах и контроле качества на телефоне. Это ежедневные разговоры с клиентами: где уходит заявка, когда слышат «дорого», когда бросают длинную форму или пишут ночью.</p>
                     <p>Поэтому ИИ-менеджер отрабатывает «дорого», фиксирует следующий шаг и отдаёт лид оператору. А лендинг не украшает услугу — он продаёт.</p>
                 </div>
                 <ul class="approach-points">
-                    <li class="reveal-on-scroll tilt-card">
+                    <li class="reveal-on-scroll tilt-card mu-magic-card mu-shine-border">
                         <span>01</span>
                         <div>
                             <h3>Продажи, а не виджет</h3>
                             <p>Сценарий пишется как разговор менеджера: бюджет, сроки, возражение, оффер.</p>
                         </div>
                     </li>
-                    <li class="reveal-on-scroll tilt-card">
+                    <li class="reveal-on-scroll tilt-card mu-magic-card mu-shine-border">
                         <span>02</span>
                         <div>
                             <h3>Контроль качества в логике</h3>
                             <p>Перед запуском проверяем диалог: не называем цену слишком рано, берём контакт и даём понятный следующий шаг.</p>
                         </div>
                     </li>
-                    <li class="reveal-on-scroll tilt-card">
+                    <li class="reveal-on-scroll tilt-card mu-magic-card mu-shine-border">
                         <span>03</span>
                         <div>
                             <h3>Лид без ручного поиска</h3>
@@ -103,15 +180,15 @@
             </div>
         </section>
 
-        <section class="solutions" id="solutions">
+        <section class="solutions mu-grid-pattern" id="solutions">
             <div class="container">
-                <div class="section-head reveal-on-scroll">
+                <div class="section-head reveal-on-scroll mu-box-reveal">
                     <p class="eyebrow">Наши решения</p>
                     <h2>Рабочие отраслевые стенды</h2>
                     <p class="section-desc">Живые демо: лендинг с ИИ, Telegram-менеджер и бот сбора заявок — так видно, как устроена продажа.</p>
                 </div>
                 <div class="solutions-grid">
-                    <a class="solution-card reveal-on-scroll tilt-card" href="https://greenscape-ai-demo.vercel.app/" target="_blank" rel="noopener">
+                    <a class="solution-card reveal-on-scroll tilt-card mu-magic-card mu-border-beam" href="https://greenscape-ai-demo.vercel.app/" target="_blank" rel="noopener">
                         <div class="solution-visual">
                             <img src="img/greenscape.png" alt="GreenScape AI — лендинг с AI-агентом" width="720" height="460">
                         </div>
@@ -122,7 +199,7 @@
                             <span class="solution-cta">Открыть лендинг →</span>
                         </div>
                     </a>
-                    <a class="solution-card reveal-on-scroll tilt-card" href="https://t.me/iogram3x_bot" target="_blank" rel="noopener">
+                    <a class="solution-card reveal-on-scroll tilt-card mu-magic-card mu-border-beam" href="https://t.me/iogram3x_bot" target="_blank" rel="noopener">
                         <div class="solution-visual">
                             <img src="img/kitchen-bot.png" alt="Демо AI-менеджера кухонь в Telegram" width="720" height="460">
                         </div>
@@ -133,7 +210,7 @@
                             <span class="solution-cta">Открыть демо-бота →</span>
                         </div>
                     </a>
-                    <a class="solution-card reveal-on-scroll tilt-card" href="https://t.me/MegaPromptBot" target="_blank" rel="noopener">
+                    <a class="solution-card reveal-on-scroll tilt-card mu-magic-card mu-border-beam" href="https://t.me/MegaPromptBot" target="_blank" rel="noopener">
                         <div class="solution-visual">
                             <img src="img/lead-bot.png" alt="Демо бота сбора заявок" width="720" height="460">
                         </div>
@@ -150,12 +227,12 @@
 
         <section class="channel" id="channel">
             <div class="container channel-inner">
-                <div class="reveal-on-scroll">
+                <div class="reveal-on-scroll mu-blur-in">
                     <p class="eyebrow">Открытая работа</p>
                     <h2>Следите за разработками студии</h2>
                     <p>В канале — кейсы, этапы проектов и решения по автоматизации. Так видно, кто стоит за MiniScribe Labs и что происходит после старта.</p>
                 </div>
-                <a class="channel-card reveal-on-scroll tilt-card" href="https://t.me/syntora_news" target="_blank" rel="noopener">
+                <a class="channel-card reveal-on-scroll tilt-card mu-magic-card mu-shine-border" href="https://t.me/syntora_news" target="_blank" rel="noopener">
                     <img src="img/syntora-logo.jpg" alt="Telegram-канал MiniScribe Labs" width="1024" height="512">
                     <span class="channel-cta">Открыть канал →</span>
                 </a>
@@ -164,27 +241,52 @@
 
         <section class="process" id="process">
             <div class="container">
-                <div class="section-head reveal-on-scroll">
+                <div class="section-head reveal-on-scroll mu-blur-in">
                     <p class="eyebrow">Как запускаем</p>
                     <h2>Четыре шага без сюрпризов</h2>
                 </div>
+                <div class="mu-orbit reveal-on-scroll" aria-hidden="true">
+                    <div class="mu-orbit-ring">
+                        <span class="mu-orbit-dot" style="--a: 20deg; --r: 38%"></span>
+                        <span class="mu-orbit-dot" style="--a: 140deg; --r: 38%; background: #8ec8ff"></span>
+                        <span class="mu-orbit-dot" style="--a: 260deg; --r: 38%"></span>
+                    </div>
+                    <div class="mu-orbit-ring">
+                        <span class="mu-orbit-dot" style="--a: 70deg; --r: 48%; background: #f3f2ee"></span>
+                        <span class="mu-orbit-dot" style="--a: 200deg; --r: 48%; background: #8ec8ff"></span>
+                    </div>
+                    <div class="mu-orbit-core">воронка<br>→ запуск</div>
+                </div>
+                <div class="mu-beam-wrap reveal-on-scroll" aria-hidden="true">
+                    <svg class="mu-beam-svg" viewBox="0 0 800 72" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="muBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#c8f542" stop-opacity="0"/>
+                                <stop offset="50%" stop-color="#c8f542"/>
+                                <stop offset="100%" stop-color="#8ec8ff" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="mu-beam-path" d="M20 36 C 180 8, 280 64, 400 36 S 620 8, 780 36"/>
+                        <path class="mu-beam-glow" d="M20 36 C 180 8, 280 64, 400 36 S 620 8, 780 36"/>
+                    </svg>
+                </div>
                 <ol class="process-list">
-                    <li class="reveal-on-scroll">
+                    <li class="reveal-on-scroll mu-magic-card mu-border-beam">
                         <span>01</span>
                         <h3>Разбор воронки</h3>
                         <p>Где сливается заявка, какой следующий шаг у ИИ, куда класть контакт.</p>
                     </li>
-                    <li class="reveal-on-scroll">
+                    <li class="reveal-on-scroll mu-magic-card mu-border-beam">
                         <span>02</span>
                         <h3>Сценарий продаж</h3>
                         <p>Промпт и ветки как у сильного менеджера: квалификация, цена, возражение.</p>
                     </li>
-                    <li class="reveal-on-scroll">
+                    <li class="reveal-on-scroll mu-magic-card mu-border-beam">
                         <span>03</span>
                         <h3>Сборка контура</h3>
                         <p>Лендинг и/или Telegram, связка с уведомлениями, проверка на реальных формулировках.</p>
                     </li>
-                    <li class="reveal-on-scroll">
+                    <li class="reveal-on-scroll mu-magic-card mu-border-beam">
                         <span>04</span>
                         <h3>Запуск и сопровождение</h3>
                         <p>Инструкция, правки сценария, поддержка по выбранному продукту.</p>
@@ -193,15 +295,15 @@
             </div>
         </section>
 
-        <section class="pricing" id="pricing">
+        <section class="pricing mu-retro-grid" id="pricing">
             <div class="container">
-                <div class="section-head reveal-on-scroll">
+                <div class="section-head reveal-on-scroll mu-blur-in">
                     <p class="eyebrow">Стоимость</p>
                     <h2>Два понятных продукта</h2>
                     <p class="section-desc">Точная цифра — после разбора воронки. Ниже — ориентир для старта разговора.</p>
                 </div>
                 <div class="pricing-grid">
-                    <article class="price-card reveal-on-scroll tilt-card">
+                    <article class="price-card reveal-on-scroll tilt-card mu-magic-card mu-shine-border">
                         <h3>AI-сотрудник под ключ</h3>
                         <p class="price-lead">Создание, промпт-инжиниринг, уведомления оператору.</p>
                         <p class="price-amount">от 45 000 ₽</p>
@@ -214,7 +316,7 @@
                         </ul>
                         <a href="#contact" class="btn btn-glass btn-full magnetic">Обсудить</a>
                     </article>
-                    <article class="price-card featured reveal-on-scroll tilt-card">
+                    <article class="price-card featured reveal-on-scroll tilt-card mu-magic-card mu-neon-card">
                         <h3>AI-лендинг + автоматизация</h3>
                         <p class="price-lead">Веб-разработка, ИИ-бот и интеграция в одном контуре.</p>
                         <p class="price-amount">от 80 000 ₽</p>
@@ -225,7 +327,7 @@
                             <li>Квалификация заявки, локальное хранение и алерт в Telegram</li>
                             <li>Запуск, базовая SEO, инструкция</li>
                         </ul>
-                        <a href="#contact" class="btn btn-solid btn-full magnetic">Обсудить</a>
+                        <a href="#contact" class="btn btn-solid btn-full magnetic mu-shimmer-btn">Обсудить</a>
                     </article>
                 </div>
             </div>
@@ -233,22 +335,22 @@
 
         <section class="contact" id="contact">
             <div class="container">
-                <div class="section-head reveal-on-scroll">
+                <div class="section-head reveal-on-scroll mu-blur-in">
                     <p class="eyebrow">Контакт</p>
                     <h2>Разберём, где у вас сливаются лиды</h2>
                 </div>
                 <div class="contact-grid">
-                    <div class="contact-left reveal-on-scroll">
+                    <div class="contact-left reveal-on-scroll mu-blur-in">
                         <p class="contact-desc">Коротко опишите нишу и где теряется заявка. Форма на сайте — живое демо MiniScribe Labs: заявка сохраняется и сразу уходит в Telegram.</p>
                         <div class="contact-channels">
-                            <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="contact-channel">
+                            <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="contact-channel mu-magic-card">
                                 <span class="contact-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><path fill="#2AABEE" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.55 7.32c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.18-2.55 4.57-4.13c.2-.18-.04-.28-.3-.1l-5.65 3.56-2.43-.76c-.53-.16-.54-.53.11-.78l9.5-3.66c.44-.16.83.1.69.89z"/></svg>
                                 </span>
                                 <span>Telegram</span>
                                 <strong>@syntora_space</strong>
                             </a>
-                            <a href="https://wa.me/message/HZRO4HO5M6DDN1" target="_blank" rel="noopener" class="contact-channel">
+                            <a href="https://wa.me/message/HZRO4HO5M6DDN1" target="_blank" rel="noopener" class="contact-channel mu-magic-card">
                                 <span class="contact-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><path fill="#25D366" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.12h.01c5.46 0 9.89-4.4 9.89-9.85C21.94 6.4 17.5 2 12.04 2zm5.72 13.99c-.24.68-1.4 1.3-1.94 1.34-.5.04-1.12.06-1.81-.11-.42-.11-.95-.31-1.64-.6-2.89-1.25-4.77-4.16-4.92-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36h.55c.18 0 .41-.06.64.49.24.56.8 1.95.87 2.09.07.14.12.31.02.49-.1.18-.14.31-.28.48-.14.16-.3.37-.42.49-.14.14-.29.29-.12.57.16.27.73 1.2 1.56 1.95 1.07.96 1.97 1.26 2.25 1.4.27.14.44.12.6-.07.16-.18.7-.82.89-1.1.19-.27.37-.23.64-.14.27.1 1.71.81 2 .95.29.14.49.21.56.33.07.12.07.68-.17 1.36z"/></svg>
                                 </span>
@@ -258,7 +360,7 @@
                         </div>
                         <p class="meta-disclaimer">* WhatsApp — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Запрет не распространяется на мессенджер WhatsApp.</p>
                     </div>
-                    <form class="contact-form reveal-on-scroll" id="contactForm" action="#contact" method="post" novalidate>
+                    <form class="contact-form reveal-on-scroll mu-border-beam mu-magic-card" id="contactForm" action="#contact" method="post" novalidate>
                         <p class="hp" aria-hidden="true">
                             <label for="gotcha">Не заполняйте</label>
                             <input id="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -296,7 +398,7 @@
                         </label>
                         <p class="form-success" id="formSuccess" role="status" aria-live="polite" hidden></p>
                         <p class="form-error" id="formError" role="alert" aria-live="assertive" hidden></p>
-                        <button type="submit" class="btn btn-solid btn-full magnetic">Отправить заявку</button>
+                        <button type="submit" class="btn btn-solid btn-full magnetic mu-shimmer-btn mu-pulse-btn">Отправить заявку</button>
                     </form>
                 </div>
             </div>
@@ -328,6 +430,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=31"></script>
+    <script src="script.js?v=32"></script>
+    <script src="magic.js?v=32"></script>
 </body>
 </html>

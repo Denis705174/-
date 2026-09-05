@@ -160,6 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (formError) {
             formError.hidden = true;
         }
+        if (typeof window.mslFireConfetti === "function") {
+            window.mslFireConfetti();
+        }
     };
 
     if (form) {

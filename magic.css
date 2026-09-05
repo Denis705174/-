@@ -1,0 +1,647 @@
+/* Magic UI–inspired effects (vanilla port). Accent stays acid lime. */
+
+.mu-meteors {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.mu-meteor {
+    position: absolute;
+    top: -10%;
+    width: 2px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(to right, transparent, rgba(200, 245, 66, 0.9));
+    box-shadow: 0 0 0 1px rgba(200, 245, 66, 0.12);
+    animation: muMeteor var(--duration, 5s) linear infinite;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+}
+.mu-meteor::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(200, 245, 66, 0.65), transparent);
+}
+@keyframes muMeteor {
+    0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: rotate(215deg) translateX(-520px); opacity: 0; }
+}
+
+.mu-ripple {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.mu-ripple span {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border: 1px solid rgba(200, 245, 66, 0.14);
+    animation: muRipple 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation-delay: var(--delay);
+    opacity: 0;
+}
+@keyframes muRipple {
+    0% { transform: scale(0.55); opacity: 0.55; }
+    100% { transform: scale(1.35); opacity: 0; }
+}
+
+.mu-dot-pattern {
+    position: relative;
+}
+.mu-dot-pattern::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(200, 245, 66, 0.18) 1px, transparent 1px);
+    background-size: 18px 18px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+    opacity: 0.45;
+}
+.mu-dot-pattern > * { position: relative; z-index: 1; }
+
+.mu-retro-grid {
+    position: relative;
+    overflow: hidden;
+}
+.mu-retro-grid::before {
+    content: "";
+    position: absolute;
+    inset: -40% 0 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, rgba(200, 245, 66, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 245, 66, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    transform: perspective(420px) rotateX(58deg);
+    transform-origin: center top;
+    animation: muRetro 18s linear infinite;
+    mask-image: linear-gradient(to bottom, transparent, #000 35%, transparent 85%);
+}
+.mu-retro-grid > * { position: relative; z-index: 1; }
+@keyframes muRetro {
+    from { background-position: 0 0; }
+    to { background-position: 0 48px; }
+}
+
+.mu-grid-pattern {
+    position: relative;
+}
+.mu-grid-pattern::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, #000 25%, transparent 70%);
+}
+.mu-grid-pattern > * { position: relative; z-index: 1; }
+
+.mu-shiny-text {
+    display: inline-block;
+    background: linear-gradient(
+        90deg,
+        rgba(155, 156, 166, 0.55) 0%,
+        rgba(243, 242, 238, 0.95) 45%,
+        rgba(200, 245, 66, 0.95) 50%,
+        rgba(243, 242, 238, 0.95) 55%,
+        rgba(155, 156, 166, 0.55) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: muShiny 4.5s linear infinite;
+}
+@keyframes muShiny {
+    to { background-position: -200% center; }
+}
+
+.mu-gradient-text {
+    background: linear-gradient(90deg, #f3f2ee, #c8f542, #8ec8ff, #c8f542, #f3f2ee);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: muGradText 7s linear infinite;
+}
+@keyframes muGradText {
+    to { background-position: 220% center; }
+}
+
+.mu-sparkles {
+    position: relative;
+    display: inline-block;
+}
+.mu-sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    pointer-events: none;
+    background: var(--c, #c8f542);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: muSparkle var(--d, 1.8s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+    opacity: 0;
+}
+@keyframes muSparkle {
+    0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1) rotate(180deg); opacity: 1; }
+}
+
+.mu-word-rotate {
+    display: inline-grid;
+    vertical-align: baseline;
+}
+.mu-word-rotate > span {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(0.45em);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.mu-word-rotate > span.is-on {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mu-marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 1.1rem 0;
+    border-block: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.02);
+}
+.mu-marquee::before,
+.mu-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+.mu-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg), transparent);
+}
+.mu-marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg), transparent);
+}
+.mu-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 2.5rem;
+    animation: muMarquee var(--duration, 32s) linear infinite;
+}
+.mu-marquee:hover .mu-marquee-track { animation-play-state: paused; }
+.mu-marquee.reverse .mu-marquee-track { animation-direction: reverse; }
+.mu-marquee-item {
+    flex: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: -0.02em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.mu-marquee-item em {
+    color: var(--accent);
+    font-style: italic;
+}
+@keyframes muMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.mu-stats {
+    padding: 2.75rem 0 0;
+}
+.mu-stats-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 720px) {
+    .mu-stats-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.mu-stat {
+    padding: 1.15rem 1.2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--bg-panel);
+}
+.mu-stat strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    letter-spacing: -0.04em;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+.mu-stat span {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.mu-border-beam {
+    position: relative;
+    overflow: hidden;
+}
+.mu-border-beam::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+        from var(--beam-angle, 0deg),
+        transparent 0%,
+        transparent 55%,
+        rgba(200, 245, 66, 0.95) 72%,
+        rgba(142, 200, 255, 0.7) 82%,
+        transparent 92%
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: muBeam 4.5s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+@property --beam-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes muBeam {
+    to { --beam-angle: 360deg; }
+}
+
+.mu-shine-border {
+    position: relative;
+}
+.mu-shine-border::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+        110deg,
+        transparent 25%,
+        rgba(200, 245, 66, 0.55) 45%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(142, 200, 255, 0.45) 55%,
+        transparent 75%
+    );
+    background-size: 250% 100%;
+    animation: muShineBorder 5s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 1px;
+}
+.mu-shine-border > * { position: relative; z-index: 1; }
+@keyframes muShineBorder {
+    to { background-position: 250% 0; }
+}
+
+.mu-magic-card {
+    --mx: 50%;
+    --my: 50%;
+    position: relative;
+    overflow: hidden;
+}
+.mu-magic-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        420px circle at var(--mx) var(--my),
+        rgba(200, 245, 66, 0.16),
+        transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.mu-magic-card:hover::before { opacity: 1; }
+.mu-magic-card > * { position: relative; z-index: 2; }
+
+.mu-neon-card {
+    background:
+        linear-gradient(var(--bg-elevated), var(--bg-elevated)) padding-box,
+        linear-gradient(135deg, rgba(200, 245, 66, 0.85), rgba(142, 200, 255, 0.55), rgba(200, 245, 66, 0.35)) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 0 40px rgba(200, 245, 66, 0.12);
+    animation: muNeonPulse 4s ease-in-out infinite;
+}
+@keyframes muNeonPulse {
+    0%, 100% { box-shadow: 0 0 28px rgba(200, 245, 66, 0.1); }
+    50% { box-shadow: 0 0 48px rgba(200, 245, 66, 0.22); }
+}
+
+.mu-shimmer-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+.mu-shimmer-btn::before {
+    content: "";
+    position: absolute;
+    inset: -140%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.75) 8%,
+        transparent 18%
+    );
+    animation: muShimmerSpin 2.8s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.65;
+}
+.btn-solid.mu-shimmer-btn {
+    background:
+        linear-gradient(var(--accent), var(--accent)) padding-box,
+        conic-gradient(from var(--beam-angle, 0deg), transparent 55%, #fff 75%, transparent 90%) border-box;
+    border: 2px solid transparent;
+    animation: muBeam 2.8s linear infinite;
+}
+.btn-solid.mu-shimmer-btn::before { display: none; }
+@keyframes muShimmerSpin {
+    to { transform: rotate(360deg); }
+}
+
+.mu-pulse-btn {
+    animation: muPulse 2.2s ease-in-out infinite;
+}
+@keyframes muPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(200, 245, 66, 0.45); }
+    50% { box-shadow: 0 0 0 12px rgba(200, 245, 66, 0); }
+}
+
+.mu-orbit {
+    position: relative;
+    width: min(280px, 70vw);
+    height: min(280px, 70vw);
+    margin: 0 auto 2rem;
+}
+.mu-orbit-ring {
+    position: absolute;
+    inset: 12%;
+    border: 1px dashed rgba(200, 245, 66, 0.25);
+    border-radius: 50%;
+    animation: muOrbitSpin 28s linear infinite;
+}
+.mu-orbit-ring:nth-child(2) {
+    inset: 0;
+    animation-duration: 40s;
+    animation-direction: reverse;
+    border-color: rgba(142, 200, 255, 0.2);
+}
+.mu-orbit-core {
+    position: absolute;
+    inset: 34%;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(200, 245, 66, 0.08);
+    border: 1px solid rgba(200, 245, 66, 0.35);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.2;
+    color: var(--text);
+}
+.mu-orbit-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(200, 245, 66, 0.6);
+    transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a)));
+}
+@keyframes muOrbitSpin {
+    to { transform: rotate(360deg); }
+}
+
+.mu-beam-wrap {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.mu-beam-svg {
+    width: 100%;
+    height: 72px;
+    overflow: visible;
+}
+.mu-beam-path {
+    fill: none;
+    stroke: rgba(200, 245, 66, 0.25);
+    stroke-width: 2;
+}
+.mu-beam-glow {
+    fill: none;
+    stroke: url(#muBeamGrad);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 40 220;
+    animation: muBeamDash 2.8s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(200, 245, 66, 0.65));
+}
+@keyframes muBeamDash {
+    to { stroke-dashoffset: -260; }
+}
+.mu-beam-nodes {
+    display: none;
+}
+
+.process-list li.mu-border-beam {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-panel);
+    overflow: hidden;
+}
+@media (min-width: 720px) {
+    .process-list li.mu-border-beam {
+        border: 1px solid var(--line);
+        padding-left: 1.4rem;
+    }
+}
+.approach-points li.mu-shine-border {
+    overflow: hidden;
+}
+.mu-stat {
+    overflow: hidden;
+}
+.mu-word-rotate {
+    min-width: 22ch;
+    text-align: left;
+}
+
+.btn.interactive-hover {
+    min-width: 11.5rem;
+}
+.btn.interactive-hover .ih-arrow {
+    color: inherit;
+}
+
+.mu-blur-in.is-visible,
+.reveal-on-scroll.mu-blur-in.is-visible {
+    filter: blur(0);
+}
+.reveal-on-scroll.mu-blur-in {
+    filter: blur(10px);
+    transition:
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mu-box-reveal {
+    position: relative;
+    overflow: hidden;
+}
+.mu-box-reveal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateX(-101%);
+    pointer-events: none;
+    z-index: 3;
+}
+.mu-box-reveal.is-visible::after {
+    animation: muBoxReveal 0.75s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+@keyframes muBoxReveal {
+    0% { transform: translateX(-101%); }
+    45% { transform: translateX(0); }
+    100% { transform: translateX(101%); }
+}
+
+.mu-confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 80;
+    overflow: hidden;
+}
+.mu-confetti i {
+    position: absolute;
+    top: -12px;
+    width: 8px;
+    height: 12px;
+    border-radius: 2px;
+    opacity: 0.95;
+    animation: muConfettiFall var(--d, 2.4s) ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+@keyframes muConfettiFall {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 1; }
+    100% { transform: translate3d(var(--x, 0), 110vh, 0) rotate(720deg); opacity: 0; }
+}
+
+.mu-cool-burst {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 70;
+    background: var(--accent);
+    animation: muCool 0.7s ease-out forwards;
+}
+@keyframes muCool {
+    to {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+.interactive-hover {
+    position: relative;
+    overflow: hidden;
+}
+.interactive-hover .ih-label {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.interactive-hover .ih-arrow {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    transform: translateX(-110%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    font-weight: 700;
+}
+.interactive-hover:hover .ih-label { transform: translateX(110%); }
+.interactive-hover:hover .ih-arrow { transform: translateX(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    .mu-meteor,
+    .mu-ripple span,
+    .mu-shiny-text,
+    .mu-gradient-text,
+    .mu-sparkle,
+    .mu-marquee-track,
+    .mu-border-beam::before,
+    .mu-shine-border::after,
+    .mu-shimmer-btn::before,
+    .mu-pulse-btn,
+    .mu-orbit-ring,
+    .mu-beam-glow,
+    .mu-neon-card,
+    .mu-retro-grid::before {
+        animation: none !important;
+    }
+    .mu-shiny-text,
+    .mu-gradient-text {
+        color: var(--accent);
+        background: none;
+        -webkit-background-clip: unset;
+        background-clip: unset;
+    }
+    .reveal-on-scroll.mu-blur-in { filter: none; }
+    .mu-box-reveal::after { display: none; }
+}
