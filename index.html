@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syntora — ИИ-менеджеры и AI-лендинги, которые продают 24/7</title>
-    <meta name="description" content="Syntora внедряет ИИ-менеджеров и собирает конверсионные AI-лендинги. Архитектура продаж: квалификация заявки, отработка возражений, передача лида в CRM.">
-    <link rel="canonical" href="https://syntora.space/">
+    <!-- TODO: заменить на реальный домен после покупки -->
+    <title>MiniScribe Labs — ИИ-менеджеры и AI-лендинги, которые продают 24/7</title>
+    <meta name="description" content="MiniScribe Labs внедряет ИИ-менеджеров и собирает конверсионные AI-лендинги. Архитектура продаж: квалификация заявки, отработка возражений, передача лида оператору.">
+    <link rel="canonical" href="https://[ДОМЕН]/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:url" content="https://syntora.space/">
-    <meta property="og:title" content="Syntora — ИИ-менеджеры и AI-лендинги, которые продают 24/7">
-    <meta property="og:description" content="Syntora внедряет ИИ-менеджеров и собирает конверсионные AI-лендинги. Архитектура продаж: квалификация заявки, отработка возражений, передача лида в CRM.">
-    <meta property="og:image" content="https://syntora.space/img/syntora-logo.jpg">
+    <meta property="og:url" content="https://[ДОМЕН]/">
+    <meta property="og:title" content="MiniScribe Labs — ИИ-менеджеры и AI-лендинги">
+    <meta property="og:description" content="ИИ-менеджеры и конверсионные AI-лендинги, которые продают 24/7.">
+    <meta property="og:image" content="https://[ДОМЕН]/img/msl-mark.svg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Syntora — ИИ-менеджеры и AI-лендинги">
+    <meta name="twitter:title" content="MiniScribe Labs — ИИ-менеджеры и AI-лендинги">
     <meta name="twitter:description" content="ИИ-менеджеры и конверсионные AI-лендинги, которые продают 24/7.">
-    <meta name="twitter:image" content="https://syntora.space/img/syntora-logo.jpg">
+    <meta name="twitter:image" content="https://[ДОМЕН]/img/msl-mark.svg">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://syntora-lead-api-1.onrender.com; form-action 'self'; base-uri 'self'">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=22">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
     <a class="skip-link" href="#main">К содержанию</a>
-    <canvas id="space" class="space-canvas" aria-hidden="true"></canvas>
-    <div class="glow" aria-hidden="true"></div>
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="/" class="logo" aria-label="Syntora — на главную"><span class="logo-mark" aria-hidden="true"><img src="img/syntora-mark.png" alt=""></span><span class="logo-word">Syntora</span></a>
+            <a href="/" class="logo" aria-label="MiniScribe Labs — на главную">
+                <span class="logo-mark" aria-hidden="true"><img src="img/msl-mark.svg" alt="" width="28" height="28"></span>
+                <span class="logo-word">MiniScribe <em>Labs</em></span>
+            </a>
             <nav class="nav" id="nav">
                 <a href="#approach">Подход</a>
                 <a href="#solutions">Решения</a>
@@ -48,264 +52,262 @@
     </header>
 
     <main id="main">
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-copy tilt">
-            <p class="eyebrow">Архитектура продаж, а не код ради кода</p>
-            <h1>Внедряем ИИ-менеджеров и создаём конверсионные AI-лендинги, <em>которые продают 24/7</em></h1>
-            <p class="hero-desc">Ботов сегодня собирают за вечер. Заявки после этого всё равно сливаются: менеджер молчит, клиент слышит «дорого», ночью сайт молчит, бригада на объекте. Мы проектируем контур, в котором лид не теряется — от первого вопроса до строки в CRM.</p>
-            <div class="hero-actions">
-                <a href="#solutions" class="btn btn-solid btn-lg">Смотреть решения</a>
-                <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="btn btn-line btn-lg">Написать в Telegram</a>
-            </div>
-            </div>
-            <div class="hero-stage" aria-hidden="true">
-                <canvas id="globe" aria-hidden="true"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <section class="approach" id="approach">
-        <div class="container approach-grid">
-            <div>
-                <p class="eyebrow">Почему это работает</p>
-                <h2>Пять лет в продажах — виднее любого фреймворка</h2>
-            </div>
-            <div class="approach-copy">
-                <p>Syntora — молодая студия: быстро собираем рабочие контуры продаж и доводим их до результата, без воды и лишних обещаний.</p>
-                <p>Мы архитекторы продаж, а не «просто кодеры». Система собирается так, как должен работать живой отдел: квалификация, цена, возражение, следующий шаг, фиксация контакта.</p>
-                <p>За студией — пять лет личного опыта в продажах и контроле качества на телефоне. Это не теория из курса, а ежедневные разговоры с клиентами: где уходит заявка, когда слышат «дорого, подумайте», когда бросают длинную форму или пишут ночью, а трубку не берут.</p>
-                <p>Поэтому ИИ-менеджер у нас отрабатывает «дорого», фиксирует следующий шаг и кладёт лид в CRM. А лендинг не украшает услугу — он продаёт, пока вы на объекте.</p>
-            </div>
-            <ul class="approach-points">
-                <li class="tilt">
-                    <span>01</span>
-                    <div>
-                        <h3>Продажи, а не виджет</h3>
-                        <p>Сценарий пишется как разговор менеджера: бюджет, сроки, возражение, оффер.</p>
-                    </div>
-                </li>
-                <li class="tilt">
-                    <span>02</span>
-                    <div>
-                        <h3>Контроль качества в логике</h3>
-                        <p>Перед запуском проверяем диалог как отдел контроля качества: не называем цену слишком рано, не забываем взять телефон и всегда даём клиенту понятный следующий шаг.</p>
-                    </div>
-                </li>
-                <li class="tilt">
-                    <span>03</span>
-                    <div>
-                        <h3>CRM без ручной переписки</h3>
-                        <p>Квалифицированная заявка уходит в Google Sheets и дублируется в Telegram. Утро начинается с лидов, а не с поиска переписок.</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="solutions" id="solutions">
-        <div class="container">
-            <div class="section-head">
-                <p class="eyebrow">Наши решения</p>
-                <h2>Рабочие отраслевые стенды</h2>
-                <p class="section-desc">Это не «тысячи внедрений». Это живые демо, на которых видно, как устроена продажа: лендинг с ИИ, Telegram-менеджер и бот сбора заявок.</p>
-            </div>
-            <div class="solutions-grid">
-                <a class="solution-card tilt" href="https://greenscape-ai-demo.vercel.app/" target="_blank" rel="noopener">
-                    <div class="solution-visual">
-                        <img src="img/greenscape.png" alt="GreenScape AI — лендинг с AI-агентом" width="720" height="460">
-                    </div>
-                    <div class="solution-body">
-                        <p class="kicker">GreenScape AI · лендинг</p>
-                        <h3>Интеллектуальная лидогенерация для ландшафтного бизнеса</h3>
-                        <p>Лендинг с интегрированным AI-ассистентом. Квалифицирует заявки на озеленение прямо на сайте, пока бригада на объекте.</p>
-                        <span class="solution-cta">Открыть лендинг →</span>
-                    </div>
-                </a>
-                <a class="solution-card tilt" href="https://t.me/iogram3x_bot" target="_blank" rel="noopener">
-                    <div class="solution-visual">
-                        <img src="img/kitchen-bot.png" alt="AI-менеджер кухонь в Telegram" width="720" height="460">
-                    </div>
-                    <div class="solution-body">
-                        <p class="kicker">Syntora Kitchen AI · демо</p>
-                        <h3>AI-менеджер для мебельного бизнеса</h3>
-                        <p>Демо Telegram-менеджера: отрабатывает возражения по цене, закрывает на замер и передаёт лиды в Google Sheets + уведомление в Telegram.</p>
-                        <span class="solution-cta">Открыть демо-бота →</span>
-                    </div>
-                </a>
-                <a class="solution-card tilt" href="https://t.me/MegaPromptBot" target="_blank" rel="noopener">
-                    <div class="solution-visual">
-                        <img src="img/lead-bot.png" alt="Бот сбора заявок в Telegram" width="720" height="460">
-                    </div>
-                    <div class="solution-body">
-                        <p class="kicker">Syntora Lead Bot · демо</p>
-                        <h3>Бот сбора заявок</h3>
-                        <p>Демо: анкета в Telegram — имя, телефон, услуга. Заявка мгновенно приходит менеджеру. Тот же контур, что настраиваем клиентам.</p>
-                        <span class="solution-cta">Открыть демо-бота →</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="channel" id="channel">
-        <div class="container channel-inner">
-            <div>
-                <p class="eyebrow">Открытая работа</p>
-                <h2>Следите за нашими разработками</h2>
-                <p>Мы работаем открыто: в канале Syntora — реальные кейсы, этапы проектов и решения по автоматизации. Так видно, кто за студией стоит и что происходит после старта работы.</p>
-            </div>
-            <a class="channel-card tilt" href="https://t.me/syntora_news" target="_blank" rel="noopener">
-                <img src="img/syntora-logo.jpg" alt="Telegram-канал Syntora NEWS" width="1024" height="512">
-            </a>
-        </div>
-    </section>
-
-    <section class="process" id="process">
-        <div class="container">
-            <div class="section-head">
-                <p class="eyebrow">Как запускаем</p>
-                <h2>Четыре шага без сюрпризов</h2>
-            </div>
-            <ol class="process-list">
-                <li class="tilt">
-                    <span>01</span>
-                    <h3>Разбор воронки</h3>
-                    <p>Где сейчас сливается заявка, какой следующий шаг должен быть у ИИ, куда класть контакт.</p>
-                </li>
-                <li class="tilt">
-                    <span>02</span>
-                    <h3>Сценарий продаж</h3>
-                    <p>Промпт и ветки как у сильного менеджера: квалификация, цена, возражение.</p>
-                </li>
-                <li class="tilt">
-                    <span>03</span>
-                    <h3>Сборка контура</h3>
-                    <p>Лендинг и/или Telegram, связка с CRM, проверка диалогов на реальных формулировках.</p>
-                </li>
-                <li class="tilt">
-                    <span>04</span>
-                    <h3>Запуск и сопровождение</h3>
-                    <p>Инструкция, правки сценария, поддержка по выбранному продукту.</p>
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-head">
-                <p class="eyebrow">Стоимость</p>
-                <h2>Два понятных продукта</h2>
-                <p class="section-desc">Точная цифра — после разбора воронки. Ниже — ориентир, с которого начинается разговор.</p>
-            </div>
-            <div class="pricing-grid">
-                <article class="price-card tilt">
-                    <h3>AI-сотрудник под ключ</h3>
-                    <p class="price-lead">Создание, промпт-инжиниринг, связка с CRM.</p>
-                    <p class="price-amount">от 45 000 ₽</p>
-                    <p class="price-note">+ 5 000 ₽/мес поддержка</p>
-                    <ul>
-                        <li>ИИ-менеджер в Telegram под вашу нишу</li>
-                        <li>Отработка возражений и закрытие на следующий шаг</li>
-                        <li>Передача лидов в Google Sheets + уведомление в Telegram</li>
-                        <li>Правки сценария в рамках сопровождения</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-line btn-full">Обсудить</a>
-                </article>
-                <article class="price-card featured tilt">
-                    <h3>AI-лендинг + автоматизация</h3>
-                    <p class="price-lead">Веб-разработка, ИИ-бот и интеграция в одном контуре.</p>
-                    <p class="price-amount">от 80 000 ₽</p>
-                    <p class="price-note">Сайт, который продаёт, плюс менеджер 24/7</p>
-                    <ul>
-                        <li>Конверсионный лендинг с оффером и формой</li>
-                        <li>AI-ассистент на сайте и/или в Telegram</li>
-                        <li>Квалификация заявки, запись в Google Sheets и алерт в Telegram</li>
-                        <li>Запуск, базовая SEO, инструкция</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-solid btn-full">Обсудить</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-head">
-                <p class="eyebrow">Контакт</p>
-                <h2>Разберём, где у вас сливаются лиды</h2>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-left">
-                    <p class="contact-desc">Коротко опишите нишу и где сейчас теряется заявка. Форма на этом сайте — живое демо: заявка сразу уходит в Telegram, как мы настраиваем для клиентов.</p>
-                    <div class="contact-channels">
-                        <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="contact-channel">
-                            <span class="contact-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path fill="#2AABEE" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.55 7.32c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.18-2.55 4.57-4.13c.2-.18-.04-.28-.3-.1l-5.65 3.56-2.43-.76c-.53-.16-.54-.53.11-.78l9.5-3.66c.44-.16.83.1.69.89z"/></svg>
-                            </span>
-                            <span>Telegram</span>
-                            <strong>@syntora_space</strong>
-                        </a>
-                        <a href="https://wa.me/message/HZRO4HO5M6DDN1" target="_blank" rel="noopener" class="contact-channel">
-                            <span class="contact-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path fill="#25D366" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.12h.01c5.46 0 9.89-4.4 9.89-9.85C21.94 6.4 17.5 2 12.04 2zm5.72 13.99c-.24.68-1.4 1.3-1.94 1.34-.5.04-1.12.06-1.81-.11-.42-.11-.95-.31-1.64-.6-2.89-1.25-4.77-4.16-4.92-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36h.55c.18 0 .41-.06.64.49.24.56.8 1.95.87 2.09.07.14.12.31.02.49-.1.18-.14.31-.28.48-.14.16-.3.37-.42.49-.14.14-.29.29-.12.57.16.27.73 1.2 1.56 1.95 1.07.96 1.97 1.26 2.25 1.4.27.14.44.12.6-.07.16-.18.7-.82.89-1.1.19-.27.37-.23.64-.14.27.1 1.71.81 2 .95.29.14.49.21.56.33.07.12.07.68-.17 1.36z"/></svg>
-                            </span>
-                            <span>WhatsApp*</span>
-                            <strong>написать</strong>
-                        </a>
-                    </div>
-                    <p class="meta-disclaimer">* WhatsApp — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Запрет не распространяется на мессенджер WhatsApp.</p>
+        <section class="hero">
+            <div class="container hero-frame">
+                <p class="brand-lockup reveal">MiniScribe Labs</p>
+                <h1 class="reveal delay-1">ИИ-менеджеры и AI-лендинги, <em>которые продают 24/7</em></h1>
+                <p class="hero-desc reveal delay-2">Мы проектируем контур продаж, в котором лид не теряется: квалификация, возражение, следующий шаг и мгновенный алерт оператору — пока вы на объекте или offline.</p>
+                <div class="hero-actions reveal delay-3">
+                    <a href="#solutions" class="btn btn-solid btn-lg">Смотреть решения</a>
+                    <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="btn btn-glass btn-lg">Написать в Telegram</a>
                 </div>
-                <form class="contact-form" id="contactForm" action="#contact" method="post" novalidate>
-                    <p class="hp" aria-hidden="true">
-                        <label for="gotcha">Не заполняйте</label>
-                        <input id="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-                    </p>
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label for="name">Имя</label>
-                            <input id="name" type="text" name="name" autocomplete="name" maxlength="80" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="phone">Телефон или Telegram</label>
-                            <input id="phone" type="text" name="phone" autocomplete="tel" maxlength="80" required>
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="email">Email, если удобнее почта</label>
-                        <input id="email" type="email" name="email" autocomplete="email" maxlength="120">
-                    </div>
-                    <div class="form-field">
-                        <label for="service">Что нужно</label>
-                        <select id="service" name="service" required>
-                            <option value="consult" selected>Нужен разбор воронки</option>
-                            <option value="ai-employee">AI-сотрудник под ключ</option>
-                            <option value="landing">AI-лендинг + автоматизация</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <label for="message">Краткое описание</label>
-                        <textarea id="message" name="message" rows="4" maxlength="2000"></textarea>
-                    </div>
-                    <label class="consent">
-                        <input type="checkbox" name="consent" value="yes" required>
-                        <span>Согласен на обработку персональных данных, включая возможную передачу в Telegram (трансграничная передача), в целях ответа на заявку. <a href="privacy.html">Политика конфиденциальности</a></span>
-                    </label>
-                    <p class="form-success" id="formSuccess" role="status" aria-live="polite" hidden></p>
-                    <p class="form-error" id="formError" role="alert" aria-live="assertive" hidden></p>
-                    <button type="submit" class="btn btn-solid btn-full">Отправить заявку</button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="approach" id="approach">
+            <div class="container approach-grid">
+                <div>
+                    <p class="eyebrow">Почему это работает</p>
+                    <h2>Продажи в логике системы, а не виджет «ради галочки»</h2>
+                </div>
+                <div class="approach-copy">
+                    <p><strong>MiniScribe Labs</strong> — студия ИИ-контуров продаж. Мы собираем рабочие сценарии под нишу и доводим до результата: без воды и лишних обещаний.</p>
+                    <p>В основе — личный опыт основателя в продажах и контроле качества на телефоне. Это ежедневные разговоры с клиентами: где уходит заявка, когда слышат «дорого», когда бросают длинную форму или пишут ночью.</p>
+                    <p>Поэтому ИИ-менеджер отрабатывает «дорого», фиксирует следующий шаг и отдаёт лид оператору. А лендинг не украшает услугу — он продаёт.</p>
+                </div>
+                <ul class="approach-points">
+                    <li>
+                        <span>01</span>
+                        <div>
+                            <h3>Продажи, а не виджет</h3>
+                            <p>Сценарий пишется как разговор менеджера: бюджет, сроки, возражение, оффер.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span>02</span>
+                        <div>
+                            <h3>Контроль качества в логике</h3>
+                            <p>Перед запуском проверяем диалог: не называем цену слишком рано, берём контакт и даём понятный следующий шаг.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span>03</span>
+                        <div>
+                            <h3>Лид без ручного поиска</h3>
+                            <p>Квалифицированная заявка сохраняется локально и сразу уходит уведомлением в Telegram. Утро начинается с лидов, а не с поиска переписок.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solutions" id="solutions">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Наши решения</p>
+                    <h2>Рабочие отраслевые стенды</h2>
+                    <p class="section-desc">Живые демо: лендинг с ИИ, Telegram-менеджер и бот сбора заявок — так видно, как устроена продажа.</p>
+                </div>
+                <div class="solutions-grid">
+                    <a class="solution-card" href="https://greenscape-ai-demo.vercel.app/" target="_blank" rel="noopener">
+                        <div class="solution-visual">
+                            <img src="img/greenscape.png" alt="GreenScape AI — лендинг с AI-агентом" width="720" height="460">
+                        </div>
+                        <div class="solution-body">
+                            <p class="kicker">GreenScape AI · лендинг</p>
+                            <h3>Интеллектуальная лидогенерация для ландшафтного бизнеса</h3>
+                            <p>Лендинг с AI-ассистентом. Квалифицирует заявки на озеленение, пока бригада на объекте.</p>
+                            <span class="solution-cta">Открыть лендинг →</span>
+                        </div>
+                    </a>
+                    <a class="solution-card" href="https://t.me/iogram3x_bot" target="_blank" rel="noopener">
+                        <div class="solution-visual">
+                            <img src="img/kitchen-bot.png" alt="Демо AI-менеджера кухонь в Telegram" width="720" height="460">
+                        </div>
+                        <div class="solution-body">
+                            <p class="kicker">MiniScribe Kitchen AI · демо</p>
+                            <h3>AI-менеджер для мебельного бизнеса</h3>
+                            <p>Демо-версия (@iogram3x_bot): отрабатывает возражения по цене, закрывает на замер и шлёт алерт в Telegram.</p>
+                            <span class="solution-cta">Открыть демо-бота →</span>
+                        </div>
+                    </a>
+                    <a class="solution-card" href="https://t.me/MegaPromptBot" target="_blank" rel="noopener">
+                        <div class="solution-visual">
+                            <img src="img/lead-bot.png" alt="Демо бота сбора заявок" width="720" height="460">
+                        </div>
+                        <div class="solution-body">
+                            <p class="kicker">MiniScribe Lead Bot · демо</p>
+                            <h3>Бот сбора заявок</h3>
+                            <p>Демо-версия (@MegaPromptBot): анкета в Telegram — имя, телефон, услуга. Заявка мгновенно приходит менеджеру.</p>
+                            <span class="solution-cta">Открыть демо-бота →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="channel" id="channel">
+            <div class="container channel-inner">
+                <div>
+                    <p class="eyebrow">Открытая работа</p>
+                    <h2>Следите за разработками студии</h2>
+                    <p>В канале — кейсы, этапы проектов и решения по автоматизации. Так видно, кто стоит за MiniScribe Labs и что происходит после старта.</p>
+                </div>
+                <a class="channel-card" href="https://t.me/syntora_news" target="_blank" rel="noopener">
+                    <img src="img/syntora-logo.jpg" alt="Telegram-канал MiniScribe Labs" width="1024" height="512">
+                    <span class="channel-cta">Открыть канал →</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="process" id="process">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Как запускаем</p>
+                    <h2>Четыре шага без сюрпризов</h2>
+                </div>
+                <ol class="process-list">
+                    <li>
+                        <span>01</span>
+                        <h3>Разбор воронки</h3>
+                        <p>Где сливается заявка, какой следующий шаг у ИИ, куда класть контакт.</p>
+                    </li>
+                    <li>
+                        <span>02</span>
+                        <h3>Сценарий продаж</h3>
+                        <p>Промпт и ветки как у сильного менеджера: квалификация, цена, возражение.</p>
+                    </li>
+                    <li>
+                        <span>03</span>
+                        <h3>Сборка контура</h3>
+                        <p>Лендинг и/или Telegram, связка с уведомлениями, проверка на реальных формулировках.</p>
+                    </li>
+                    <li>
+                        <span>04</span>
+                        <h3>Запуск и сопровождение</h3>
+                        <p>Инструкция, правки сценария, поддержка по выбранному продукту.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Стоимость</p>
+                    <h2>Два понятных продукта</h2>
+                    <p class="section-desc">Точная цифра — после разбора воронки. Ниже — ориентир для старта разговора.</p>
+                </div>
+                <div class="pricing-grid">
+                    <article class="price-card">
+                        <h3>AI-сотрудник под ключ</h3>
+                        <p class="price-lead">Создание, промпт-инжиниринг, уведомления оператору.</p>
+                        <p class="price-amount">от 45 000 ₽</p>
+                        <p class="price-note">+ 5 000 ₽/мес поддержка</p>
+                        <ul>
+                            <li>ИИ-менеджер в Telegram под вашу нишу</li>
+                            <li>Отработка возражений и закрытие на следующий шаг</li>
+                            <li>Сохранение заявки + мгновенный алерт в Telegram</li>
+                            <li>Правки сценария в рамках сопровождения</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-glass btn-full">Обсудить</a>
+                    </article>
+                    <article class="price-card featured">
+                        <h3>AI-лендинг + автоматизация</h3>
+                        <p class="price-lead">Веб-разработка, ИИ-бот и интеграция в одном контуре.</p>
+                        <p class="price-amount">от 80 000 ₽</p>
+                        <p class="price-note">Сайт, который продаёт, плюс менеджер 24/7</p>
+                        <ul>
+                            <li>Конверсионный лендинг с оффером и формой</li>
+                            <li>AI-ассистент на сайте и/или в Telegram</li>
+                            <li>Квалификация заявки, локальное хранение и алерт в Telegram</li>
+                            <li>Запуск, базовая SEO, инструкция</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-solid btn-full">Обсудить</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Контакт</p>
+                    <h2>Разберём, где у вас сливаются лиды</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-left">
+                        <p class="contact-desc">Коротко опишите нишу и где теряется заявка. Форма на сайте — живое демо MiniScribe Labs: заявка сохраняется и сразу уходит в Telegram.</p>
+                        <div class="contact-channels">
+                            <a href="https://t.me/syntora_space" target="_blank" rel="noopener" class="contact-channel">
+                                <span class="contact-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path fill="#2AABEE" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.55 7.32c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.18-2.55 4.57-4.13c.2-.18-.04-.28-.3-.1l-5.65 3.56-2.43-.76c-.53-.16-.54-.53.11-.78l9.5-3.66c.44-.16.83.1.69.89z"/></svg>
+                                </span>
+                                <span>Telegram</span>
+                                <strong>@syntora_space</strong>
+                            </a>
+                            <a href="https://wa.me/message/HZRO4HO5M6DDN1" target="_blank" rel="noopener" class="contact-channel">
+                                <span class="contact-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path fill="#25D366" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.84c0 1.74.46 3.44 1.32 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.12h.01c5.46 0 9.89-4.4 9.89-9.85C21.94 6.4 17.5 2 12.04 2zm5.72 13.99c-.24.68-1.4 1.3-1.94 1.34-.5.04-1.12.06-1.81-.11-.42-.11-.95-.31-1.64-.6-2.89-1.25-4.77-4.16-4.92-4.35-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36h.55c.18 0 .41-.06.64.49.24.56.8 1.95.87 2.09.07.14.12.31.02.49-.1.18-.14.31-.28.48-.14.16-.3.37-.42.49-.14.14-.29.29-.12.57.16.27.73 1.2 1.56 1.95 1.07.96 1.97 1.26 2.25 1.4.27.14.44.12.6-.07.16-.18.7-.82.89-1.1.19-.27.37-.23.64-.14.27.1 1.71.81 2 .95.29.14.49.21.56.33.07.12.07.68-.17 1.36z"/></svg>
+                                </span>
+                                <span>WhatsApp*</span>
+                                <strong>написать</strong>
+                            </a>
+                        </div>
+                        <p class="meta-disclaimer">* WhatsApp — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Запрет не распространяется на мессенджер WhatsApp.</p>
+                    </div>
+                    <form class="contact-form" id="contactForm" action="#contact" method="post" novalidate>
+                        <p class="hp" aria-hidden="true">
+                            <label for="gotcha">Не заполняйте</label>
+                            <input id="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                        </p>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name">Имя</label>
+                                <input id="name" type="text" name="name" autocomplete="name" maxlength="80" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="phone">Телефон или Telegram</label>
+                                <input id="phone" type="text" name="phone" autocomplete="tel" maxlength="80" required>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email, если удобнее почта</label>
+                            <input id="email" type="email" name="email" autocomplete="email" maxlength="120">
+                        </div>
+                        <div class="form-field">
+                            <label for="service">Что нужно</label>
+                            <select id="service" name="service" required>
+                                <option value="consult" selected>Нужен разбор воронки</option>
+                                <option value="ai-employee">AI-сотрудник под ключ</option>
+                                <option value="landing">AI-лендинг + автоматизация</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Краткое описание</label>
+                            <textarea id="message" name="message" rows="4" maxlength="2000"></textarea>
+                        </div>
+                        <label class="consent">
+                            <input type="checkbox" name="consent" value="yes" required>
+                            <span>Согласен на обработку персональных данных MiniScribe Labs (ИНН 324104032397) в целях ответа на заявку, включая возможную трансграничную передачу в Telegram. <a href="privacy.html">Политика конфиденциальности</a></span>
+                        </label>
+                        <p class="form-success" id="formSuccess" role="status" aria-live="polite" hidden></p>
+                        <p class="form-error" id="formError" role="alert" aria-live="assertive" hidden></p>
+                        <button type="submit" class="btn btn-solid btn-full">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
         <div class="container footer-inner">
             <div>
-                <a href="/" class="logo" aria-label="Syntora — на главную"><span class="logo-mark" aria-hidden="true"><img src="img/syntora-mark.png" alt=""></span><span class="logo-word">Syntora</span></a>
+                <a href="/" class="logo" aria-label="MiniScribe Labs — на главную">
+                    <span class="logo-mark" aria-hidden="true"><img src="img/msl-mark.svg" alt="" width="28" height="28"></span>
+                    <span class="logo-word">MiniScribe <em>Labs</em></span>
+                </a>
                 <p>ИИ-менеджеры и AI-лендинги.</p>
             </div>
             <div class="footer-links">
@@ -319,10 +321,11 @@
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>© 2026 Syntora · ИНН 324104032397 · <a href="privacy.html">Конфиденциальность</a></p>
+            <!-- TODO: заменить [ДОМЕН] на реальный домен после покупки -->
+            <p>© 2026 MiniScribe Labs · ИНН 324104032397 · <a href="privacy.html">Конфиденциальность</a> · [ДОМЕН]</p>
         </div>
     </footer>
 
-    <script src="script.js?v=22"></script>
+    <script src="script.js?v=30"></script>
 </body>
 </html>

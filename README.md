@@ -1,43 +1,38 @@
-# Syntora — сайт syntora.space
+# MiniScribe Labs — статический сайт (пока на GitHub Pages / syntora.space)
 
-Статический лендинг на GitHub Pages.
+## Бренд
 
-## Файлы
+**MiniScribe Labs** — студия ИИ-менеджеров и AI-лендингов.
 
-| Файл | Назначение |
-|------|------------|
-| `index.html` | Главная страница |
-| `privacy.html` | Политика конфиденциальности |
-| `style.css`, `script.js` | Стили и логика формы |
-| `img/` | Изображения и favicon |
-| `CNAME` | Домен syntora.space |
+<!-- TODO: заменить на реальный домен после покупки -->
+Домен: `[ДОМЕН]` (плейсхолдер). Пока CNAME указывает на `syntora.space`, чтобы сайт оставался доступен.
 
 ## Форма заявок
 
-Форма отправляет JSON на `lead-api` (Render: `https://syntora-lead-api-1.onrender.com`), который:
-1. Сохраняет заявку в SQLite
-2. Шлёт уведомление в Telegram
+Форма шлёт JSON на lead-api:
+`https://syntora-lead-api-1.onrender.com/api/lead`
 
-Код API: `../lead-api/`
+1. Сохраняет заявку в SQLite (`leads.db`) всегда
+2. Шлёт уведомление в Telegram (ошибка Telegram не отменяет сохранение)
 
-Перед публикацией убедитесь, что API задеплоен (см. `../lead-api/README.md`).
+## Демо-боты
+
+| На сайте | Username | Примечание |
+|----------|----------|------------|
+| MiniScribe Kitchen AI · демо | @iogram3x_bot | переименование в BotFather — по желанию |
+| MiniScribe Lead Bot · демо | @MegaPromptBot | актуальный lead-бот |
+| @ymy_test_bot | — | устарел, не используется |
+
+## РКН / 152-ФЗ
+
+- ИНН: 324104032397
+- Политика: `privacy.html`
+- Хостинг lead-api на Render (зарубежный) — для полной локализации ПДн нужен сервер в РФ (отдельное решение)
 
 ## Деплой сайта
 
 ```bash
 git add .
-git commit -m "описание изменений"
+git commit -m "описание"
 git push origin main
 ```
-
-GitHub Pages обновится через 1–2 минуты.
-
-Remote: `https://github.com/denis705174/-`
-
-## Домен .ru (желательно)
-
-1. Купить `syntora.ru` у регистратора.
-2. Настроить 301-редирект на `https://syntora.space`.
-3. В политике и контактах можно указать оба домена.
-
-Бренд и контент менять не нужно — только редирект.

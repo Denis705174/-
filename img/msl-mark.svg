@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="MiniScribe Labs">
+  <rect width="32" height="32" rx="8" fill="#060708"/>
+  <path fill="#C8F542" d="M8 8h4.2l3.8 9.2L19.8 8H24l-5.4 16h-4.2L8 8zm11.2 11.2c1.9 0 3.3 1.2 3.3 2.9S21.1 25 19.2 25c-1.8 0-3.2-1.2-3.2-2.9s1.4-2.9 3.2-2.9z"/>
+</svg>

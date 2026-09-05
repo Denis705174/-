@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 btn.textContent = "Отправлено";
                 form.reset();
-                showFormSuccess("Заявка отправлена. Менеджер свяжется с вами в Telegram или по указанному контакту.");
+                showFormSuccess("Заявка отправлена. Менеджер MiniScribe Labs свяжется с вами.");
             } catch (error) {
                 if (error.name === "AbortError") {
                     showFormError("Сервис просыпается — подождите минуту и попробуйте снова, или напишите в Telegram @syntora_space.");
