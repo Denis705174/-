@@ -1,132 +1,319 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TODO: заменить на реальный домен после покупки -->
-    <title>Политика конфиденциальности — Syntora Space</title>
-    <meta name="description" content="Как Syntora Space обрабатывает заявки и персональные данные.">
-    <link rel="canonical" href="https://syntora.space/privacy.html">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ru_RU">
-    <meta property="og:url" content="https://syntora.space/privacy.html">
-    <meta property="og:title" content="Политика конфиденциальности — Syntora Space">
-    <meta property="og:description" content="Как Syntora Space обрабатывает заявки и персональные данные.">
-    <meta property="og:image" content="https://syntora.space/img/msl-mark.svg">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Политика конфиденциальности — Syntora Space">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'">
-    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=33">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Политика конфиденциальности — Syntora Space</title>
+  <meta name="description" content="Как Syntora Space обрабатывает заявки и персональные данные." />
+  <link rel="canonical" href="https://syntora.space/privacy.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:url" content="https://syntora.space/privacy.html" />
+  <meta property="og:title" content="Политика конфиденциальности — Syntora Space" />
+  <meta property="og:description" content="Как Syntora Space обрабатывает заявки и персональные данные." />
+  <meta property="og:image" content="https://syntora.space/img/syntora-mark.png" />
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0c0c;
+      --brand: #3d81e3;
+      --cyan: #00d2ff;
+      --mint: #a4f4fd;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: var(--bg);
+      color: #fff;
+      min-height: 100vh;
+    }
+    ::selection { background: rgb(61 129 227 / 0.3); }
+    a { color: var(--mint); text-decoration: none; }
+    a:hover { color: #fff; }
+    .skip {
+      position: absolute; left: -9999px;
+    }
+    .skip:focus {
+      left: 1rem; top: 1rem; z-index: 100;
+      background: #fff; color: #000; padding: 0.5rem 0.75rem; border-radius: 999px;
+    }
+    .bg-video {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    }
+    .bg-video video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .bg-video::after {
+      content: ''; position: absolute; inset: 0; background: rgb(12 12 12 / 0.72);
+    }
+    .shell { position: relative; z-index: 10; }
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgb(12 12 12 / 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgb(255 255 255 / 0.1);
+    }
+    .nav-inner {
+      max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.875rem; color: #fff; text-decoration: none;
+    }
+    .brand img { width: 2.75rem; height: 2.75rem; object-fit: contain; }
+    .brand-text { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; }
+    .brand-text span { color: rgb(255 255 255 / 0.6); }
+    .nav-links {
+      display: none; align-items: center; gap: 1.75rem;
+    }
+    .nav-links a {
+      color: rgb(255 255 255 / 0.7); font-size: 0.875rem; font-weight: 500; text-decoration: none;
+    }
+    .nav-links a:hover { color: #fff; }
+    .cta {
+      display: none;
+      align-items: center; justify-content: center;
+      border-radius: 999px; background: #fff; color: #000;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.75rem 1.25rem; text-decoration: none;
+    }
+    .cta:hover { background: rgb(255 255 255 / 0.9); color: #000; }
+    .burger {
+      width: 2.75rem; height: 2.75rem; border-radius: 999px;
+      border: 1px solid rgb(255 255 255 / 0.1); background: rgb(255 255 255 / 0.05);
+      color: #fff; display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .mobile-panel {
+      display: none; margin: 0 1.5rem 1rem;
+      border: 1px solid rgb(255 255 255 / 0.1); border-radius: 1rem;
+      background: rgb(0 0 0 / 0.7); backdrop-filter: blur(16px); padding: 0.5rem 1rem 1rem;
+    }
+    .mobile-panel.open { display: block; }
+    .mobile-panel a {
+      display: block; color: rgb(255 255 255 / 0.8); text-decoration: none;
+      padding: 0.85rem 0; border-bottom: 1px solid rgb(255 255 255 / 0.1);
+      font-size: 0.875rem;
+    }
+    .mobile-panel a:last-child { border-bottom: 0; }
+    .mobile-cta {
+      display: block; margin-top: 0.75rem; text-align: center;
+      border-radius: 999px; background: #fff; color: #000;
+      font-size: 0.875rem; font-weight: 500; padding: 0.75rem 1.25rem; text-decoration: none;
+    }
+    @media (min-width: 768px) {
+      .nav-links, .cta { display: inline-flex; }
+      .burger, .mobile-panel, .mobile-panel.open { display: none !important; }
+    }
+    main {
+      max-width: 72rem; margin: 0 auto; padding: 3rem 1.5rem 5rem;
+    }
+    .card {
+      position: relative; overflow: hidden;
+      background: rgba(255,255,255,0.01);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(4px);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+      border-radius: 1.5rem;
+      padding: 2rem 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .card { padding: 3rem; }
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+        rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+        rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: rgb(255 255 255 / 0.7); font-size: 0.875rem; font-weight: 500;
+    }
+    .eyebrow i {
+      width: 0.375rem; height: 0.375rem; border-radius: 999px; background: #fff; display: inline-block;
+    }
+    h1 {
+      margin: 1.25rem 0 1rem;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.05;
+    }
+    h2 {
+      margin: 2.25rem 0 0.75rem;
+      font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em;
+    }
+    p, li {
+      color: rgb(255 255 255 / 0.65);
+      font-size: 0.95rem; line-height: 1.65;
+    }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.35rem 0; }
+    strong { color: rgb(255 255 255 / 0.9); font-weight: 600; }
+    .disclaimer {
+      font-size: 0.75rem; color: rgb(255 255 255 / 0.4); line-height: 1.55;
+    }
+    .back {
+      display: inline-flex; margin-top: 2rem;
+      border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.15);
+      color: #fff; padding: 0.75rem 1.25rem; font-size: 0.875rem; font-weight: 500;
+      text-decoration: none;
+    }
+    .back:hover { background: rgb(255 255 255 / 0.05); color: #fff; }
+    footer {
+      border-top: 1px solid rgb(255 255 255 / 0.1);
+      padding: 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 72rem; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      color: rgb(255 255 255 / 0.4); font-size: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .footer-inner {
+        flex-direction: row; align-items: center; justify-content: space-between;
+      }
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .footer-links a { color: rgb(255 255 255 / 0.4); text-decoration: none; }
+    .footer-links a:hover { color: rgb(255 255 255 / 0.7); }
+  </style>
 </head>
 <body>
-    <a class="skip-link" href="#main">К содержанию</a>
-    <div class="bg-mesh" aria-hidden="true"></div>
-    <div class="bg-noise" aria-hidden="true"></div>
+  <a class="skip" href="#main">К содержанию</a>
 
-    <header class="header" id="header">
-        <div class="container header-inner">
-            <a href="index.html" class="logo" aria-label="Syntora Space — на главную">
-                <span class="logo-mark" aria-hidden="true"><img src="img/msl-mark.svg" alt="" width="28" height="28"></span>
-                <span class="logo-word">Syntora <em>Space</em></span>
-            </a>
-            <nav class="nav" id="nav">
-                <a href="index.html#approach">Подход</a>
-                <a href="index.html#solutions">Решения</a>
-                <a href="index.html#channel">Канал</a>
-                <a href="index.html#process">Процесс</a>
-                <a href="index.html#pricing">Цены</a>
-                <a href="index.html#contact">Контакты</a>
-            </nav>
-            <a href="index.html#contact" class="btn btn-solid header-cta">Обсудить задачу</a>
-            <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav" type="button">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+  <div class="bg-video" aria-hidden="true">
+    <video autoplay loop muted playsinline
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4"></video>
+  </div>
+
+  <div class="shell">
+    <header class="header">
+      <div class="nav-inner">
+        <a class="brand" href="/" aria-label="Syntora Space — на главную">
+          <img src="/img/syntora-mark.png" alt="" width="44" height="44" />
+          <span class="brand-text">Syntora <span>Space</span></span>
+        </a>
+        <nav class="nav-links" aria-label="Основная навигация">
+          <a href="/">Главная</a>
+          <a href="/#approach">Подход</a>
+          <a href="/#solutions">Решения</a>
+          <a href="/#pricing">Цены</a>
+          <a href="/#contact">Контакты</a>
+        </nav>
+        <a class="cta" href="/#contact">Обсудить задачу</a>
+        <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div class="mobile-panel" id="mobile-nav">
+        <a href="/">Главная</a>
+        <a href="/#approach">Подход</a>
+        <a href="/#solutions">Решения</a>
+        <a href="/#pricing">Цены</a>
+        <a href="/#contact">Контакты</a>
+        <a class="mobile-cta" href="/#contact">Обсудить задачу</a>
+      </div>
     </header>
 
-    <main id="main" class="legal">
-        <div class="container">
-            <p class="eyebrow">Документ</p>
-            <h1>Политика конфиденциальности</h1>
-            <p>Эта страница объясняет, какие данные собирает сайт Syntora Space <!-- TODO: заменить syntora.space --> (syntora.space) и как мы их обрабатываем в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
+    <main id="main">
+      <article class="card">
+        <div class="eyebrow"><i></i> Документ</div>
+        <h1>Политика конфиденциальности</h1>
+        <p>Эта страница объясняет, какие данные собирает сайт Syntora Space (syntora.space) и как мы их обрабатываем в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
 
-            <h2>Кто обрабатывает данные</h2>
-            <p>Оператор персональных данных — самозанятый гражданин РФ, бренд <strong>Syntora Space</strong>, ИНН <strong>324104032397</strong>.</p>
-            <p>Контакт для запросов по персональным данным: Telegram <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a>.</p>
-            <p><strong>Для полного соответствия 152-ФЗ оператору нужно указать ФИО и адрес регистрации.</strong> Пришлите данные — добавим в эту политику.</p>
+        <h2>Кто обрабатывает данные</h2>
+        <p>Оператор персональных данных — самозанятый гражданин РФ, бренд <strong>Syntora Space</strong>, ИНН <strong>324104032397</strong>.</p>
+        <p>Контакт для запросов по персональным данным: Telegram <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a>.</p>
+        <p><strong>Для полного соответствия 152-ФЗ оператору нужно указать ФИО и адрес регистрации.</strong> Пришлите данные — добавим в эту политику.</p>
 
-            <h2>Правовые основания</h2>
-            <p>Обработка ведётся на основании согласия субъекта персональных данных (ст. 6 и 9 152-ФЗ). Перед отправкой формы вы отмечаете чекбокс согласия.</p>
+        <h2>Правовые основания</h2>
+        <p>Обработка ведётся на основании согласия субъекта персональных данных (ст. 6 и 9 152-ФЗ). Перед отправкой формы вы отмечаете чекбокс согласия.</p>
 
-            <h2>Какие данные собираем</h2>
-            <p>Через форму на сайте: имя, телефон или Telegram, email (если указан), выбранная услуга, текст сообщения и факт согласия.</p>
-            <p>Через демо-бота @MegaPromptBot (Syntora Lead Bot · демо): имя, контакт, услуга, сообщение и идентификатор Telegram-пользователя.</p>
+        <h2>Какие данные собираем</h2>
+        <p>Через форму на сайте: имя, телефон или Telegram, email (если указан), выбранная услуга, текст сообщения и факт согласия.</p>
+        <p>Через демо-бота @MegaPromptBot (Syntora Lead Bot · демо): имя, контакт, услуга, сообщение и идентификатор Telegram-пользователя.</p>
 
-            <h2>Цель сбора</h2>
-            <p>Единственная цель — ответить на вашу заявку и обсудить задачу по услугам Syntora Space. Мы не продаём контакты и не используем их для массовой рассылки без отдельного согласия.</p>
+        <h2>Цель сбора</h2>
+        <p>Единственная цель — ответить на вашу заявку и обсудить задачу по услугам Syntora Space. Мы не продаём контакты и не используем их для массовой рассылки без отдельного согласия.</p>
 
-            <h2>Путь данных (без Formspree)</h2>
-            <p>Заявка с сайта отправляется на наш API (lead-api на Render.com): сохраняется в локальную базу SQLite и сразу пересылается оператору в Telegram (@MegaPromptBot → chat оператора). Сторонние сервисы рассылки и Formspree не используются.</p>
-            <p>Telegram (Messenger LLP / Telegram FZ-LLC) получает текст уведомления. Это может означать трансграничную передачу (ст. 22 152-ФЗ). Отправляя форму, вы соглашаетесь на такую передачу в целях обработки заявки.</p>
-            <p>Политика Telegram: <a href="https://telegram.org/privacy" rel="noopener" target="_blank">telegram.org/privacy</a>.</p>
+        <h2>Путь данных</h2>
+        <p>Заявка с сайта отправляется на наш API (lead-api на Render.com): сохраняется в локальную базу SQLite и сразу пересылается оператору в Telegram. Сторонние сервисы рассылки и Formspree не используются.</p>
+        <p>Telegram (Messenger LLP / Telegram FZ-LLC) получает текст уведомления. Это может означать трансграничную передачу (ст. 22 152-ФЗ). Отправляя форму, вы соглашаетесь на такую передачу в целях обработки заявки.</p>
+        <p>Политика Telegram: <a href="https://telegram.org/privacy" rel="noopener" target="_blank">telegram.org/privacy</a>.</p>
 
-            <h2>Важно: хостинг за пределами РФ</h2>
-            <p>Сервер lead-api сейчас размещён на Render.com (зарубежный хостинг). Для полного соответствия требованиям о локализации персональных данных (ст. 18 / практика по 152-ФЗ) первичное хранение должно быть на сервере, физически расположенном в Российской Федерации. Это требует отдельного решения о смене хостинга — не закрывается правкой текста политики.</p>
+        <h2>Важно: хостинг за пределами РФ</h2>
+        <p>Сервер lead-api сейчас размещён на Render.com (зарубежный хостинг). Для полного соответствия требованиям о локализации персональных данных (ст. 18 / практика по 152-ФЗ) первичное хранение должно быть на сервере, физически расположенном в Российской Федерации. Это требует отдельного решения о смене хостинга — не закрывается правкой текста политики.</p>
 
-            <h2>Срок хранения</h2>
-            <p>Данные заявки храним в рабочей базе, пока нужно ответить и закрыть обращение. Затем удаляем по вашему запросу или автоматически через <strong>12 месяцев</strong> после последнего контакта, если нет иной договорённости.</p>
+        <h2>Срок хранения</h2>
+        <p>Данные заявки храним в рабочей базе, пока нужно ответить и закрыть обращение. Затем удаляем по вашему запросу или автоматически через <strong>12 месяцев</strong> после последнего контакта, если нет иной договорённости.</p>
 
-            <h2>Как отозвать согласие</h2>
-            <p>Напишите в Telegram <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a> с просьбой отозвать согласие и/или удалить данные. Мы прекратим использовать контакт для связи по этой заявке (кроме случаев, когда обработка допустима без согласия по закону) и подтвердим удаление в разумный срок, не позднее 30 дней.</p>
+        <h2>Как отозвать согласие</h2>
+        <p>Напишите в Telegram <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a> с просьбой отозвать согласие и/или удалить данные. Мы прекратим использовать контакт для связи по этой заявке (кроме случаев, когда обработка допустима без согласия по закону) и подтвердим удаление в разумный срок, не позднее 30 дней.</p>
 
-            <h2>Ваши права (ст. 14 152-ФЗ)</h2>
-            <ul>
-                <li>получить сведения об обработке ваших персональных данных;</li>
-                <li>требовать уточнения, блокирования или уничтожения данных;</li>
-                <li>отозвать согласие на обработку;</li>
-                <li>обжаловать действия оператора в Роскомнадзор (<a href="https://rkn.gov.ru/" rel="noopener" target="_blank">rkn.gov.ru</a>) или в суд.</li>
-            </ul>
-            <p>Ответ на запрос — в течение 30 дней с момента получения.</p>
+        <h2>Ваши права (ст. 14 152-ФЗ)</h2>
+        <ul>
+          <li>получить сведения об обработке ваших персональных данных;</li>
+          <li>требовать уточнения, блокирования или уничтожения данных;</li>
+          <li>отозвать согласие на обработку;</li>
+          <li>обжаловать действия оператора в Роскомнадзор (<a href="https://rkn.gov.ru/" rel="noopener" target="_blank">rkn.gov.ru</a>) или в суд.</li>
+        </ul>
+        <p>Ответ на запрос — в течение 30 дней с момента получения.</p>
 
-            <h2>Cookies и аналитика</h2>
-            <p>Сайт не ставит рекламные и аналитические cookies. Браузер может хранить обычные технические данные сессии.</p>
+        <h2>Cookies и аналитика</h2>
+        <p>Сайт не ставит рекламные и аналитические cookies. Браузер может хранить обычные технические данные сессии.</p>
 
-            <h2>Контакты</h2>
-            <ul>
-                <li>Telegram: <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a></li>
-                <li>WhatsApp*: <a href="https://wa.me/message/HZRO4HO5M6DDN1" rel="noopener" target="_blank">написать</a></li>
-                <li>ИНН самозанятого: 324104032397</li>
-                <li>Бренд: Syntora Space · сайт: syntora.space <!-- TODO: заменить на реальный домен после покупки --></li>
-            </ul>
-            <p class="meta-disclaimer">* WhatsApp — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Запрет не распространяется на мессенджер WhatsApp.</p>
-            <p>Дата публикации: 5 сентября 2026.</p>
-        </div>
+        <h2>Контакты</h2>
+        <ul>
+          <li>Telegram: <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a></li>
+          <li>WhatsApp*: <a href="https://wa.me/message/HZRO4HO5M6DDN1" rel="noopener" target="_blank">написать</a></li>
+          <li>ИНН самозанятого: 324104032397</li>
+          <li>Бренд: Syntora Space · сайт: syntora.space</li>
+        </ul>
+        <p class="disclaimer">* WhatsApp — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Запрет не распространяется на мессенджер WhatsApp.</p>
+        <p>Дата публикации: 5 сентября 2026.</p>
+
+        <a class="back" href="/">← На главную</a>
+      </article>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div>
-                <a href="index.html" class="logo" aria-label="Syntora Space — на главную">
-                    <span class="logo-mark" aria-hidden="true"><img src="img/msl-mark.svg" alt="" width="28" height="28"></span>
-                    <span class="logo-word">Syntora <em>Space</em></span>
-                </a>
-                <p>ИИ-менеджеры и AI-лендинги.</p>
-            </div>
-            <div class="footer-links">
-                <a href="index.html#approach">Подход</a>
-                <a href="index.html#contact">Контакты</a>
-                <a href="privacy.html">Конфиденциальность</a>
-            </div>
+    <footer>
+      <div class="footer-inner">
+        <p>© 2026 Syntora Space · ИНН 324104032397</p>
+        <div class="footer-links">
+          <a href="/">Главная</a>
+          <a href="/#contact">Контакты</a>
+          <a href="/privacy.html">Конфиденциальность</a>
         </div>
-        <div class="container footer-bottom">
-            <p>© 2026 Syntora Space · ИНН 324104032397</p>
-        </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="script.js?v=33"></script>
+  <script>
+    (function () {
+      var burger = document.getElementById('burger');
+      var panel = document.getElementById('mobile-nav');
+      if (!burger || !panel) return;
+      burger.addEventListener('click', function () {
+        var open = panel.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      panel.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          panel.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
