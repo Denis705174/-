@@ -55,7 +55,8 @@
     .shell { position: relative; z-index: 10; }
     .header {
       position: sticky; top: 0; z-index: 50;
-      background: rgb(12 12 12 / 0.8);
+      background: rgb(12 12 12 / 0.86);
+      -webkit-backdrop-filter: blur(16px);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgb(255 255 255 / 0.1);
     }
@@ -93,7 +94,7 @@
     .mobile-panel {
       display: none; margin: 0 1.5rem 1rem;
       border: 1px solid rgb(255 255 255 / 0.1); border-radius: 1rem;
-      background: rgb(0 0 0 / 0.7); backdrop-filter: blur(16px); padding: 0.5rem 1rem 1rem;
+      background: rgb(0 0 0 / 0.85); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); padding: 0.5rem 1rem 1rem;
     }
     .mobile-panel.open { display: block; }
     .mobile-panel a {
@@ -107,7 +108,7 @@
       border-radius: 999px; background: #fff; color: #000;
       font-size: 0.875rem; font-weight: 500; padding: 0.75rem 1.25rem; text-decoration: none;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .nav-links, .cta { display: inline-flex; }
       .burger, .mobile-panel, .mobile-panel.open { display: none !important; }
     }
@@ -118,10 +119,14 @@
       position: relative; overflow: hidden;
       background: rgba(255,255,255,0.01);
       background-blend-mode: luminosity;
+      -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
       box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
       border-radius: 1.5rem;
       padding: 2rem 1.5rem;
+    }
+    @supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+      .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); }
     }
     @media (min-width: 768px) {
       .card { padding: 3rem; }
@@ -133,8 +138,12 @@
         rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
         rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor; mask-composite: exclude;
       pointer-events: none;
+    }
+    @supports not ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+      .card::before { display: none; }
     }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -207,6 +216,7 @@
           <a href="/">Главная</a>
           <a href="/#approach">Подход</a>
           <a href="/#solutions">Решения</a>
+          <a href="/#team">Команда</a>
           <a href="/#pricing">Цены</a>
           <a href="/#contact">Контакты</a>
         </nav>
@@ -219,6 +229,7 @@
         <a href="/">Главная</a>
         <a href="/#approach">Подход</a>
         <a href="/#solutions">Решения</a>
+        <a href="/#team">Команда</a>
         <a href="/#pricing">Цены</a>
         <a href="/#contact">Контакты</a>
         <a class="mobile-cta" href="/#contact">Обсудить задачу</a>
@@ -232,9 +243,9 @@
         <p>Эта страница объясняет, какие данные собирает сайт Syntora Space (syntora.space) и как мы их обрабатываем в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
 
         <h2>Кто обрабатывает данные</h2>
-        <p>Оператор персональных данных — самозанятый гражданин РФ, бренд <strong>Syntora Space</strong>, ИНН <strong>324104032397</strong>.</p>
+        <p>Оператор персональных данных — самозанятый гражданин РФ <strong>Кошарный Денис Николаевич</strong>, бренд <strong>Syntora Space</strong>, ИНН <strong>324104032397</strong>.</p>
+        <p>Адрес регистрации оператора: <strong>Российская Федерация, г. Брянск, проспект Станке Димитрова, д. 32к1</strong>.</p>
         <p>Контакт для запросов по персональным данным: Telegram <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a>.</p>
-        <p><strong>Для полного соответствия 152-ФЗ оператору нужно указать ФИО и адрес регистрации.</strong> Пришлите данные — добавим в эту политику.</p>
 
         <h2>Правовые основания</h2>
         <p>Обработка ведётся на основании согласия субъекта персональных данных (ст. 6 и 9 152-ФЗ). Перед отправкой формы вы отмечаете чекбокс согласия.</p>
@@ -276,7 +287,8 @@
         <ul>
           <li>Telegram: <a href="https://t.me/syntora_space" rel="noopener" target="_blank">@syntora_space</a></li>
           <li>WhatsApp*: <a href="https://wa.me/message/HZRO4HO5M6DDN1" rel="noopener" target="_blank">написать</a></li>
-          <li>ИНН самозанятого: 324104032397</li>
+          <li>Оператор: Кошарный Денис Николаевич (самозанятый), ИНН 324104032397</li>
+          <li>Адрес: г. Брянск, проспект Станке Димитрова, д. 32к1</li>
           <li>Бренд: Syntora Space · сайт: syntora.space</li>
         </ul>
         <p class="disclaimer">* WhatsApp — продукт компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации. Запрет не распространяется на мессенджер WhatsApp.</p>
