@@ -2,12 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://syntora.space/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://syntora.space/privacy.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://syntora.space/consent.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>yearly</changefreq>
   </url>
 </urlset>
